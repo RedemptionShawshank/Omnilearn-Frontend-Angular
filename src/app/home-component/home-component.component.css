@@ -1,0 +1,61 @@
+   .header-bar {
+    height: 0px;
+    margin-top: 30px;
+    background-color: #240631;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position:relative;
+  }
+  
+  .website-name {
+    color: #421bf1;
+    font-family: 'Your Preferred Font', sans-serif;
+    font-size: 50px;
+    /* text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3); */
+    letter-spacing: 0px;
+    text-transform:none;
+  }
+
+  /* Add this to your styles.css or a separate CSS file */
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animated-text {
+    animation: fadeIn 1s ease-in-out; /* Adjust duration and easing as needed */
+  }
+  
+  
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .buttons a {
+    padding: 7px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  .login-button {
+    color:#ffffff;
+    background-color: #07614d; 
+  }
+  
+  .register-button {
+    color:#ffffff;
+    background-color: #ec2d14;
+  }
+  

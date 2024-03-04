@@ -1,0 +1,140 @@
+<div *ngIf="showTopicList">
+    <div class="background" [ngStyle]="{'background-image': 'url(\'assets/social-media/mybg.png\')'}">
+        <br>
+        <br>
+    
+        <div class="headline">
+            <h1>FIND EVERY COURSE</h1>
+            <h1>YOU NEED!!</h1>
+            <br>
+            <br>
+        </div>
+    
+        <div>
+            <div class="discount">
+                <p><b>Get EXTRA discount on all courses you buy!!</b></p>
+            </div>
+        <br>
+        <br>
+    
+    
+            <form class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    
+    </div>
+    
+    <div class="courses-list" >
+    
+        <div class="image-container">
+    
+            <div class="list-heading">
+                <h1>Topic List</h1>
+            </div>
+            <div class="image" >
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>DSA</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('MACHINE LEARNING')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>MACHINE LEARNING</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('SPRING BOOT')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>SPRING BOOT</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('WEB DEVELOPMENT')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>WEB DEVELOPMENT</b></div>
+                </div>
+    
+            </div>
+    
+            <div class="image" >
+    
+                <div class="box" (click)="navigateToKourses('DATA ANALYTICS')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>DATA ANALYTICS</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('COMPETITIVE PROGRAMMING')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>COMPETITIVE PROGRAMMING</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+            </div>
+    
+            <div class="image" >
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+            </div>
+    
+            <div class="image" >
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+                <div class="box" (click)="navigateToKourses('DSA')">
+                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
+                    <div class="details"><b>Short Detail</b></div>
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+    
+</div>
+
+<router-outlet *ngIf="!showTopicList"></router-outlet>
+
+
+
