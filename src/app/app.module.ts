@@ -9,7 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipe } from './filter.pipe';
+import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +20,15 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     CourseListComponent,
     KoursesComponent,
     LoginComponent,
-    HomeComponentComponent
+    HomeComponentComponent,
+    FilterPipe,
+    FilterPipesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+    
   ],
   providers: [
     provideAnimationsAsync(),

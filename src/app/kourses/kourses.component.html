@@ -1,14 +1,22 @@
 
 
-
+<form class="search-bar">
+    <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
+    <button type="submit">Search</button>
+</form>
 <div class="wrapper">
+
     <ng-container  *ngFor="let topic of courseDetails">
         <ng-container *ngIf="topic.topicName === imageName">
+            <!-- <form class="search-bar">
+                <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
+                <button type="submit">Search</button>
+            </form> -->
             <ul class="card-container">
-                <li class="card" *ngFor="let t of topic.courses" >
-                    <div class="poster"><img [src]="t.imagePath" alt="Location Unknown"></div>
+                <li class="card" *ngFor="let item of topic.courses|filter:filteredString" >
+                    <div class="poster"><img [src]="item.imagePath" alt="Location Unknown"></div>
                     <div class="details">
-                        <h1>{{t.CourseName}}</h1>
+                        <h1>{{item.CourseName}}</h1>
                         <div class="rating">
                             <span>4.2/5</span>
                         </div>
@@ -16,7 +24,7 @@
         
                         </div>
                         <p class="desc">
-                            {{t.description}}
+                            {{item.description}}
                         </p>
                         <div class="cast">
                             <h3>Cast</h3>
@@ -25,7 +33,6 @@
                 </li>
             </ul>
         </ng-container>
-
     </ng-container >
 </div>
 

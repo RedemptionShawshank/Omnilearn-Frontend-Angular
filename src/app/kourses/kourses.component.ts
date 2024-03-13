@@ -2,11 +2,6 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-interface ImageDetail {
-  topicName: string;
-  imageLoc: string;
-}
-
 
 @Component({
   selector: 'app-kourses',
@@ -15,8 +10,10 @@ interface ImageDetail {
 })
 export class KoursesComponent implements OnInit {
 
+
+
   imageName: string | undefined;
-  coursesForTopics: ImageDetail[] = [];
+  filteredString: string= '';
 
   constructor(
     private route: ActivatedRoute,
@@ -34,19 +31,34 @@ export class KoursesComponent implements OnInit {
 
   }
 
-  courseDetails=[
+  users = [{
+    name: 'Leela',
+    joinedDate: new Date(15, 2, 2016)
+  },
+  {
+    name: 'Rama',
+    joinedDate: new Date(17, 3, 2019)
+  },
+  {
+    name: 'Krishna',
+    joinedDate: new Date(20, 4, 2019)
+  },
+  ];
+
+
+  courseDetails = [
     {
       topicName:'MACHINE LEARNING',courses:[
-        {CourseName:'MACHINE LEARNING Link for course at platform A', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNINGLink for course at platform B', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNING Link for course at platform C', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNING Link for course at platform D', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNING Link for course at platform E', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNING Link for course at platform F', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNING Link for course at platform G', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNING Link for course at platform H', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:'MACHINE LEARNING Link for course at platform I', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
-        {CourseName:' MACHINE LEARNINGLink for course at platform J', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'}
+        {CourseName:'cousera', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'cousera', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'cousera', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'udemy', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'udemy', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'udemy', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'udemy', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'codingninja', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'codingninja', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'},
+        {CourseName:'codingninja', link:'https://www.coursera.org/', description:'this is the description for the course which is given by platform B this is the description for the course which is given by platform B this is the description for the course which is given by platform B', imagePath:'assets/images_courses/web-development.png'}
       ]
     },
     {
@@ -78,8 +90,4 @@ export class KoursesComponent implements OnInit {
       ]
     }
   ];
-
-
-
-
 }
