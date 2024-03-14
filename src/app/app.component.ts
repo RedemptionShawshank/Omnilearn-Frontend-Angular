@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,18 +20,13 @@ export class AppComponent {
         console.log('NavigationEnd event:', event);
       }
     });
+
+    this.router.navigate(['/home']);
   }
 
-  // openOverlay(): void {
-  //   this.dialog.open(LoginComponent, {
-  //     width: '400px',
-  //   });
-  // }
-
-
-
-  
 
 }
+
+
 
 
