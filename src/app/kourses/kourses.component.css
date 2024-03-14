@@ -26,7 +26,7 @@ body {
     justify-content: center;
     gap: 24px;
     flex-wrap: wrap;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .card-container {
@@ -184,10 +184,11 @@ body {
     height: 100%;
 }
 
-.search-bar {
-    width: 30%;
-    margin: 10% auto;
+/* .search-bar {
+    width: 50%;
+    margin-top: 10%;
     align-items: center;
+    justify-content: center;
 
 }
   
@@ -201,4 +202,38 @@ border-radius: 5px;
 padding: 10px;
 border: 2px solid #000000;
 border-radius: 5px;
-}
+} */
+
+.search-bar {
+    width: 30%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+  }
+  
+  /* Search Input Field */
+  .search-input {
+    width: 50%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 20px; /* Rounded corners */
+    font-size: 16px;
+    transition: width 1s ease; /* Smooth width transition */
+  }
+  
+  /* Expand the input field on focus */
+  .search-input:focus {
+    width: 400px; /* Expanded width */
+  }
+  
+  /* Add a subtle animation effect */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .search-input:focus {
+    animation: pulse 1.5s infinite; /* Apply animation on focus */
+  }

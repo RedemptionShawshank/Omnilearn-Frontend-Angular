@@ -1,8 +1,8 @@
 
 
 <form class="search-bar">
-    <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
-    <button type="submit">Search</button>
+    <input type="search" placeholder="Search for desired learning platform" [(ngModel)]="platformName" [ngModelOptions]="{ standalone: true }" class="search-input">
+    <!-- <button type="submit">Search</button> -->
 </form>
 <div class="wrapper">
 
@@ -13,7 +13,7 @@
                 <button type="submit">Search</button>
             </form> -->
             <ul class="card-container">
-                <li class="card" *ngFor="let item of topic.courses|filter:filteredString" >
+                <li class="card" *ngFor="let item of topic.courses|filter:platformName" >
                     <div class="poster"><img [src]="item.imagePath" alt="Location Unknown"></div>
                     <div class="details">
                         <h1>{{item.CourseName}}</h1>

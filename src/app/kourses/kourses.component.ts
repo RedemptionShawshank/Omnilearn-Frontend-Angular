@@ -13,7 +13,7 @@ export class KoursesComponent implements OnInit {
 
 
   imageName: string | undefined;
-  filteredString: string= '';
+  platformName: string= '';
 
   constructor(
     private route: ActivatedRoute,

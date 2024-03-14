@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipe } from './filter.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
+import { SocialMediaComponent } from './social-media/social-media.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
     LoginComponent,
     HomeComponentComponent,
     FilterPipe,
-    FilterPipesComponent
+    FilterPipesComponent,
+    SocialMediaComponent
   ],
   imports: [
     BrowserModule,
