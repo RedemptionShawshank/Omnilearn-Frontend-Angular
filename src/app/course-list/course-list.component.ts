@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { FilterPipe } from '../filter.pipe';
 
@@ -11,6 +11,10 @@ export class CourseListComponent {
 
   showTopicList = true;
   courseFilter: string = '';
+  loading: boolean = false;
+
+  @ViewChild('searchResults') searchResultsRef!: ElementRef;
+  @ViewChild('scrollTarget') scrollTargetRef!: ElementRef;
 
   constructor(private router:Router) {}
 
@@ -70,5 +74,33 @@ export class CourseListComponent {
       imagePath:'assets/images_courses/web-development.png'
     }
   ];
+
+    //loader
+  loaderOnInput(event: any){
+    // Show loader when input changes
+    this.loading = true;
+
+    // Simulate API call or search operation delay
+    setTimeout(() => {
+      // Hide loader after a delay (e.g., after API call completes)
+      this.loading = false;
+    }, 2000); // Adjust the delay as needed
+  }
+
+  // scrollToSearchResults() {
+  //   console.log("scrollTargetRef",this.scrollTargetRef);
+  //   if (this.searchResultsRef && this.searchResultsRef.nativeElement) {
+  //     this.scrollTargetRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //   }
+  // }
+
+  scrollToSearchResults() {
+    console.log("searchResultsRef",this.searchResultsRef);
+    window.scrollTo({top:400,behavior:'smooth'});
+    // if (this.searchResultsRef && this.searchResultsRef.nativeElement) {
+    //   this.searchResultsRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // }
+  }
+  
 
 }

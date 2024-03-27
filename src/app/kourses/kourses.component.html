@@ -1,38 +1,156 @@
 
 
 <form class="search-bar">
-    <input type="search" placeholder="Search for desired learning platform" [(ngModel)]="platformName" [ngModelOptions]="{ standalone: true }" class="search-input">
+    <input type="search" (input)="loaderOnInput($event)" placeholder="Search for desired learning platform" [(ngModel)]="platformName" [ngModelOptions]="{ standalone: true }" class="search-input">
     <!-- <button type="submit">Search</button> -->
 </form>
-<div class="wrapper">
 
-    <ng-container  *ngFor="let topic of courseDetails">
-        <ng-container *ngIf="topic.topicName === imageName">
-            <!-- <form class="search-bar">
-                <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
-                <button type="submit">Search</button>
-            </form> -->
-            <ul class="card-container">
-                <li class="card" *ngFor="let item of topic.courses|filter:platformName" >
-                    <div class="poster"><img [src]="item.imagePath" alt="Location Unknown"></div>
-                    <div class="details">
-                        <h1>{{item.CourseName}}</h1>
-                        <div class="rating">
-                            <span>4.2/5</span>
+
+
+<div class="wrapping_2_divs">
+    
+    <div class="slider">
+        <div>
+            <h3>Filter by Price</h3>
+            <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+            
+        </div>
+
+        <div class="filter-button">
+
+
+
+            <!-- <div class="flex items-center justify-center">
+            <a href="#_" class="relative px-6 py-3 font-bold text-black group">
+                <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-red-300 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+                <span class="absolute inset-0 w-full h-full border-4 border-black"></span>
+                <span class="relative">Reset</span>
+            </a>
+            </div> -->
+
+            <!-- <div class="w-full h-10 flex items-center justify-center" (click)="filterCoursesByPrice(minValue,maxValue,imageName)">
+                <button class="btn p-4 relative border-0 uppercase text-amber-300 shadow bg-transparent hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
+                    FILTER
+                </button>
+            </div> -->
+
+            <div class="w-full h-10 flex items-center justify-center" (click)="filterCoursesByPrice(minValue,maxValue,imageName)">
+                <a class="relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
+                  <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                  <span class="relative">FILTER</span>
+                </a>
+            </div>
+
+            <div class="w-full h-10 flex items-center justify-center" (click)="resetFilter()">
+                <a class="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-xl group">
+                  <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
+                    <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
+                  </span>
+                  <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-red-600 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                  <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">RESET</span>
+                </a>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    
+    <div class="wrapper" *ngIf="showFullListOfCourses && !loading">
+    
+        <ng-container  *ngFor="let topic of courseDetails">
+            <ng-container *ngIf="topic.topicName === imageName">
+                <!-- <form class="search-bar">
+                    <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
+                    <button type="submit">Search</button>
+                </form> -->
+                <ul class="card-container">
+                    <li class="card" *ngFor="let item of topic.courses|filter:platformName" >
+                        <div class="poster"><img [src]="item.imagePath" alt="Location Unknown"></div>
+                        <div class="details">
+                            <h1>{{item.CourseName}}</h1>
+                            <div class="rating">
+                                <span>4.2/5</span>
+                                <span>₹{{item.price}}</span>
+                            </div>
+                            <div class="tags">
+            
+                            </div>
+                            <p class="desc">
+                                {{item.description}}
+                            </p>
+                            <div class="cast">
+                                <h3>Cast</h3>
+                            </div>
                         </div>
-                        <div class="tags">
-        
-                        </div>
-                        <p class="desc">
-                            {{item.description}}
-                        </p>
-                        <div class="cast">
-                            <h3>Cast</h3>
-                        </div>
+                    </li>
+                </ul>
+            </ng-container>
+        </ng-container >
+    </div>
+
+    <div class="wrapper" *ngIf="!showFullListOfCourses">
+    
+        <!-- this div is when we have applied filter and now i want to use the searchbox to find courses for platform of our desire -->
+        <ul class="card-container">
+            <li class="card" *ngFor="let item of filteredCourses|filter:platformName" >
+                <div class="poster"><img [src]="item.imagePath" alt="Location Unknown"></div>
+                <div class="details">
+                    <h1>{{item.CourseName}}</h1>
+                    <div class="rating">
+                        <span>4.2/5</span>
+                        <span>₹{{item.price}}</span>
                     </div>
-                </li>
-            </ul>
-        </ng-container>
-    </ng-container >
+                    <div class="tags">
+    
+                    </div>
+                    <p class="desc">
+                        {{item.description}}
+                    </p>
+                    <div class="cast">
+                        <h3>Cast</h3>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="wrapper" *ngIf="showNoResult">
+        OOPS!!! No such platform available :( 
+    </div>
+
+    <div class="wrapper_new">
+        <div *ngIf="loading" class="boxes">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    
 </div>
+
 

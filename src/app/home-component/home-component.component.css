@@ -10,14 +10,15 @@
     padding: 0 20px;
     position:relative;
   }
+
+  .head-bar{
+    display: flex;
+  }
   
   .website-name {
-    color: #421bf1;
-    font-family: 'Your Preferred Font', sans-serif;
-    font-size: 500px;
-    /* text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3); */
-    letter-spacing: 0px;
-    text-transform:none;
+    margin-left: 20%;
+    margin-top: 20px;
+
   }
 
   /* Add this to your styles.css or a separate CSS file */
@@ -34,8 +35,10 @@
   }
   
   .animated-text {
+    margin-left: 25%;
     animation: fadeIn 1s ease-in-out; /* Adjust duration and easing as needed */
-    font-size: 50px;
+    font-size: 30px;
+    cursor: pointer;
   }
   
   
@@ -51,9 +54,19 @@
     text-decoration: none;
     color: #ffffff;
   }
-  
+
+  .buttons-top{
+    display: flex;
+  }
+
+  .wallet-button{
+    /* margin-top: 3px; */
+    margin-left: 40%;
+    cursor: pointer;
+  }
+
   .login-button {
-    width: 70px;
+    margin-left: 5px;
     cursor: pointer;
   }
   

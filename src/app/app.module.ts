@@ -10,10 +10,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FilterPipe } from './filter.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { UserWalletComponent } from './user-wallet/user-wallet.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     HomeComponentComponent,
     FilterPipe,
     FilterPipesComponent,
-    SocialMediaComponent
+    SocialMediaComponent,
+    UserWalletComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxSliderModule
     
   ],
   providers: [
