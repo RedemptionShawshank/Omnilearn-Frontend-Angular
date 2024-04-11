@@ -2,7 +2,7 @@
   
   .header-bar {
     height: 0px;
-    margin-top: 30px;
+    margin-top: 10px;
     background-color: #240631;
     display: flex;
     align-items: center;
@@ -57,6 +57,7 @@
 
   .buttons-top{
     display: flex;
+    overflow:hidden;
   }
 
   .wallet-button{

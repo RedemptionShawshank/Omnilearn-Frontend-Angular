@@ -1,6 +1,9 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Options,LabelType } from '@angular-slider/ngx-slider';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 
 interface CourseDetail {
   topicName: string;
@@ -24,11 +27,13 @@ export class KoursesComponent implements OnInit {
 
 
   loading: boolean = false;
+  isLoading: boolean = false;
   imageName: string | undefined;
   platformName: string= '';
+  
 
-  constructor(
-    private route: ActivatedRoute) {
+
+  constructor(private route: ActivatedRoute,private router:Router,private dialog : MatDialog) {
       const paramValue = this.route.snapshot.params;
       console.log('Route parameter value:', paramValue);
     }
@@ -38,21 +43,46 @@ export class KoursesComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.imageName = params['name'];
     });
+  }
 
 
+  openOverlay(): void {
+    this.dialog.open(LoginComponent, {
+      width: '400px', // Set width as needed
+    });
+  }
+
+  goToHomepage(){
+    this.router.navigate(['/home']);
   }
 
   //loader
   loaderOnInput(event: any){
-        // Show loader when input changes
-        this.loading = true;
+    // Show loader when input changes
+    this.loading = true;
 
-        // Simulate API call or search operation delay
-        setTimeout(() => {
-          // Hide loader after a delay (e.g., after API call completes)
-          this.loading = false;
-        }, 2000); // Adjust the delay as needed
+    // Simulate API call or search operation delay
+    setTimeout(() => {
+      // Hide loader after a delay (e.g., after API call completes)
+      this.loading = false;
+    }, 2000); // Adjust the delay as needed
   }
+
+  onSliderChange(event: any) {
+    // Show loader
+    this.isLoading = true;
+
+    // Perform filtering logic
+    // Simulate async operation
+    setTimeout(() => {
+      // Hide loader
+      this.isLoading = false;
+
+      // Apply filter logic here
+    }, 2000); // Simulated delay of 1 second
+  } 
+
+
 
   
 
@@ -193,4 +223,8 @@ export class KoursesComponent implements OnInit {
     this.showFullListOfCourses = true;
     this.showNoResult = false;
   }
+
+
+
+  
 }

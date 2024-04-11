@@ -1,6 +1,7 @@
 import { Component,ViewChild, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
-import { FilterPipe } from '../filter.pipe';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-course-list',
@@ -16,7 +17,7 @@ export class CourseListComponent {
   @ViewChild('searchResults') searchResultsRef!: ElementRef;
   @ViewChild('scrollTarget') scrollTargetRef!: ElementRef;
 
-  constructor(private router:Router) {}
+  constructor(private router:Router,private dialog : MatDialog) {}
 
   navigateToKourses(imageName: string){
     this.showTopicList = false;
@@ -100,6 +101,16 @@ export class CourseListComponent {
     // if (this.searchResultsRef && this.searchResultsRef.nativeElement) {
     //   this.searchResultsRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     // }
+  }
+
+  openOverlay(): void {
+    this.dialog.open(LoginComponent, {
+      width: '400px', // Set width as needed
+    });
+  }
+
+  goToHomepage(){
+    this.router.navigate(['/home']);
   }
   
 
