@@ -48,7 +48,10 @@ export class KoursesComponent implements OnInit {
     // Use ActivatedRoute to get the route parameters
     this.route.params.subscribe(params => {
       this.imageName = params['name'];
-      this.service.sendPathVariable(params['name']);
+      this.service.sendPathVariable(params['name'])
+      .subscribe(response => {
+        console.log(response);
+      });
     });
   }
 
