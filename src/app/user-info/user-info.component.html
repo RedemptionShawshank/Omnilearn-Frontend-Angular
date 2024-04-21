@@ -1,0 +1,26 @@
+<button mat-fab class="btn" matTooltip="Click to expand" (click)="showDropDown()">
+    <mat-icon>more_vert</mat-icon>
+</button>
+  
+<div class="options" *ngIf="isHovered">
+  <div class="card-profile-icon">
+    <a class="card-profile-icon1">
+      <ul>
+        <span (click)="navigateToProfile()">Profile</span>
+        <br>
+        <br>
+        <span (click)="navigateToWallet()">Wallet</span>
+      </ul>
+
+     <div class="go-corner" href="#">
+       <div class="go-arrow">
+       </div>
+     </div>
+   </a>
+  </div>
+</div>
+
+
+
+
+  

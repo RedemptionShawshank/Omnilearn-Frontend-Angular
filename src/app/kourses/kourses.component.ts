@@ -4,6 +4,7 @@ import { Options,LabelType } from '@angular-slider/ngx-slider';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
+import { StateService } from '../state.service';
 
 interface CourseDetail {
   topicName: string;
@@ -33,7 +34,12 @@ export class KoursesComponent implements OnInit {
   
 
 
-  constructor(private route: ActivatedRoute,private router:Router,private dialog : MatDialog) {
+  constructor(
+    private route: ActivatedRoute,
+    private router:Router,
+    private dialog : MatDialog,
+    private service:StateService
+  ) {
       const paramValue = this.route.snapshot.params;
       console.log('Route parameter value:', paramValue);
     }
@@ -42,8 +48,10 @@ export class KoursesComponent implements OnInit {
     // Use ActivatedRoute to get the route parameters
     this.route.params.subscribe(params => {
       this.imageName = params['name'];
+      this.service.sendPathVariable(params['name']);
     });
   }
+
 
 
   openOverlay(): void {
