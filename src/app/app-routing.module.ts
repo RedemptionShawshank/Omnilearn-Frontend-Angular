@@ -5,13 +5,16 @@ import { KoursesComponent } from './kourses/kourses.component';
 import { AppComponent } from './app.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { UserWalletComponent } from './user-wallet/user-wallet.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'/home', pathMatch:'full'},
-  {path:'home',component:AppComponent},
+  {path:'home',component:CourseListComponent},
   {path:'courses/:name',component:KoursesComponent},
   {path:'username/profilePage',component:ProfilePageComponent},
-  {path:'username/wallet',component:UserWalletComponent}
+  {path:'username/wallet',component:UserWalletComponent},
+  {path:'autorization',component:LoginComponent}
+
 
 ];
 

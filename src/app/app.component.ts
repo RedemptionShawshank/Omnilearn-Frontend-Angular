@@ -17,15 +17,15 @@ export class AppComponent implements OnInit{
 
   constructor(private router:Router,private location:Location, private dialog : MatDialog,
     private route:ActivatedRoute) {
-    router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        console.log('NavigationEnd event:', event);
-      }
-    });
+    // router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     console.log('NavigationEnd event:', event);
+    //   }
+    // });
 
 
 
-    this.router.navigate(['/home']);
+    // this.router.navigate(['/home']);
   }
 
   parameter: string | undefined;

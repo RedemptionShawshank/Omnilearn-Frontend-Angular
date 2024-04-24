@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { StateService } from '../state.service';
 import { TopicList } from '../topic-list';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-course-list',
@@ -15,11 +16,72 @@ export class CourseListComponent implements OnInit {
   showTopicList:boolean = true;
   courseFilter: string = '';
   loading: boolean = false;
+  login:boolean = false;
+
+  // private subscription: Subscription;
+
 
   @ViewChild('searchResults') searchResultsRef!: ElementRef;
   @ViewChild('scrollTarget') scrollTargetRef!: ElementRef;
 
-  constructor(private router:Router,private dialog : MatDialog,private userService: StateService) {}
+  constructor(private router:Router,private dialog : MatDialog,private userService: StateService) {
+
+
+
+    // this.subscription = this.userService.isVariableEnabled$.subscribe(enabled => {
+    //   if(localStorage.getItem('isVariableEnabled') == null ){
+    //     this.login = enabled;
+    //   }
+    //   if(!Boolean(localStorage.getItem('isVariableEnabled'))){
+    //     this.login = enabled;
+    //   }
+
+    //   console.log("old value in subscription: ",localStorage.getItem('isVariableEnabled'))
+
+    // });
+
+    // console.log("old value: ",localStorage.getItem('isVariableEnabled'));
+
+
+    // if(localStorage.getItem('isVariableEnabled') != null){
+    //   this.login = Boolean(localStorage.getItem('isVariableEnabled'));
+
+    // }
+
+    // if(Boolean(localStorage.getItem('loginStatus'))){
+    //   this.login = Boolean(localStorage.getItem('loginStatus'));
+    // }
+
+    // localStorage.clear();
+
+    console.log("came into course list component");
+
+    const storedValue: string | null = localStorage.getItem('loginStatus');
+
+    console.log("login before in constructor: ",this.login);
+    if(storedValue === 'true'){
+      this.login = true;
+    }
+    else{
+      this.login = false;
+    }
+
+    console.log("login after in constructor: ",this.login);
+
+
+
+
+  }
+
+  logOut() {
+
+    this.login = false;
+    // console.log("logout value: ",this.login);
+    // console.log("before setting: ",localStorage.getItem('isVariableEnabled'))
+    localStorage.setItem('loginStatus', String(this.login));
+    // console.log("after setting: ",localStorage.getItem('isVariableEnabled'))
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
 
   navigateToKourses(imageName: string){
     this.showTopicList = false;
@@ -32,8 +94,31 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
 
     this.getTopicList();
+
+    this.userService.componentBRefresh.subscribe(() => {
+      this.refreshComponent();
+    });
+
+
     
   }
+
+  refreshComponent(){
+
+    console.log("login before in refresh: ",this.login);
+    const storedValue1: string | null = localStorage.getItem('loginStatus');
+
+    if(storedValue1 === 'true'){
+      this.login = true;
+    }
+    else{
+      this.login = false;
+    }
+
+    console.log("login after in refresh: ",this.login);
+
+  }
+
 
   private getTopicList(){
     this.userService.getTopicList().subscribe(data =>{
@@ -154,11 +239,6 @@ export class CourseListComponent implements OnInit {
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  navigateToWallet() {
-    // Implement navigation to wallet page
-    this.showTopicList = false;
-    this.router.navigate(['/profilePage']);
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
+
 
 }

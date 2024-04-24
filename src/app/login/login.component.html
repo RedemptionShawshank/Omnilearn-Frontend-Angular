@@ -34,14 +34,14 @@
         </div>
 
         <div class="form-wrapper sign-in" *ngIf="signIn" >
-            <form action="">
+            <form (ngSubmit)="onSubmitLoginInfo()">
                 <h2>Login</h2>
                 <div class="input-group">
-                    <input type="text" required>
-                    <label for="">Username</label>
+                    <input type="text" required [(ngModel)]="loginInfo.emailId" name="email">
+                    <label for="">Email</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" required>
+                    <input type="password" required [(ngModel)]="loginInfo.password" name="password">
                     <label for="">Password</label>
                 </div>
                 <div class="forgot-pass">
