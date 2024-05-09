@@ -1,0 +1,152 @@
+/**/
+@import url(https://fonts.googleapis.com/css2?family=REM:wght@100;200;400;500;600;700;800&display=swap);
+
+/*header css*/
+.website-name {
+  /* margin-left: 18%; */
+  letter-spacing: 2.5px;
+  margin-top: 20px;
+  padding-left: 18%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.website-name img{
+  width: 80px;
+  height: 60px;
+  padding: 1%;
+
+}
+
+.animated-text {
+  /* margin-left: 25%; */
+  animation: fadeIn 1s ease-in-out; /* Adjust duration and easing as needed */
+  font-size: 40px;
+  cursor: pointer;
+  color: #000000;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.buttons-top{
+  display: flex;
+  background-color: rgb(231, 205, 205);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 1000; /* used to move the class above in z axis, that is when i scroll all below content will go under it */
+}
+
+
+
+/**/
+
+
+.profile-page{
+    height: 900px;
+    width: 100%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 5% ;
+    display: flex;
+    gap: 1%;
+}
+
+.left-bar{
+
+  background-color: rgb(242, 242, 243);
+  height: 40%;
+  width: 10%;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); */
+
+}
+
+.options{
+  cursor: pointer;
+  position:relative;
+  height: 70%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+.options:hover{
+  background-color: rgb(142, 238, 206);
+  height: 70%;
+  width: 100%;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+}
+.user-details{
+
+    height: 99%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgb(242, 242, 243);
+    display: flex;
+    /* justify-content: center; for horizontally center*/
+    padding-top: 1%;
+    padding-left: 1%;
+    gap: 1%;
+
+
+}
+/**/
+
+.wallet-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-container h1 {
+  text-align: center;
+}
+
+.wallet-info {
+  margin-bottom: 20px;
+}
+
+.transfer-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.transfer-btn:hover {
+  background-color: #0056b3;
+}
+
+.transfer-info {
+  text-align: center;
+  color: #888;
+}

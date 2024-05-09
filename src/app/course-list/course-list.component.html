@@ -1,136 +1,124 @@
-<div *ngIf="showTopicList">
-    <div class="background" [ngStyle]="{'background-image': 'url(\'assets/social-media/mybg.png\')'}">
-        <br>
-        <br>
-    
-        <div class="headline">
-            <h1>FIND EVERY COURSE</h1>
-            <h1>YOU NEED!!</h1>
-            <br>
-            <br>
-        </div>
-    
-        <div>
-            <div class="discount">
-                <p><b>Get EXTRA discount on all courses you buy!!</b></p>
-            </div>
-        <br>
-        <br>
-    
-    
-            <form class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-    
+<div class="main" *ngIf="showTopicList">
+
+
+    <div class="background" [ngStyle]="{'background-image': 'url(\'assets/logoCB.jpeg\')'}">
+
+
     </div>
     
-    <div class="courses-list" >
     
-        <div class="image-container">
-    
-            <div class="list-heading">
-                <h1>Topic List</h1>
+    <div class="courses-list" #scrollTarget>
+
+      <br>
+      <br>
+      <form class="search-bar">
+          <input type="search" (input)="loaderOnInput($event)" (click)="scrollToSearchResults()" placeholder="Search..." [(ngModel)]="courseFilter" [ngModelOptions]="{ standalone: true }" #searchResults class="search-input">
+          <!-- <button type="submit">Search</button> -->
+      </form>
+
+
+      <div class="list-heading">
+        <b>Topic List</b>
+      </div>
+      <div class="card-container" *ngIf="!loading">
+        <div class="card" *ngFor="let topic of topicList|filter:courseFilter" (click)="navigateToKourses(topic.topicName)">
+          <div class="wrapper-cards" >
+            <div class="card-front">
+              <div >
+                <div class="box" >
+                    <img class="image-box" [src]="topic.imagePath" alt="ds-algo" >
+                </div>
+              </div>
             </div>
-            <div class="image" >
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>DSA</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('MACHINE LEARNING')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>MACHINE LEARNING</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('SPRING BOOT')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>SPRING BOOT</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('WEB DEVELOPMENT')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>WEB DEVELOPMENT</b></div>
-                </div>
-    
+            <div class="card-back">
+              <div class="topic-name">
+                <div class="details"><b>{{topic.topicName}}</b></div>
+              </div>
             </div>
-    
-            <div class="image" >
-    
-                <div class="box" (click)="navigateToKourses('DATA ANALYTICS')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>DATA ANALYTICS</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('COMPETITIVE PROGRAMMING')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>COMPETITIVE PROGRAMMING</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-            </div>
-    
-            <div class="image" >
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-            </div>
-    
-            <div class="image" >
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-                <div class="box" (click)="navigateToKourses('DSA')">
-                    <img class="image-box" src="assets/images_courses/web-development.png" alt="ds-algo" >
-                    <div class="details"><b>Short Detail</b></div>
-                </div>
-    
-            </div>
-    
+          </div>
         </div>
-    </div>
+      </div>
+  </div>
+
+  <div class="loader-content" *ngIf="loading" #searchResults >
+      <div class="loader">
+          <div class="book-wrapper">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="white"
+              viewBox="0 0 126 75"
+              class="book"
+            >
+              <rect
+                stroke-width="5"
+                stroke="#e05452"
+                rx="7.5"
+                height="70"
+                width="121"
+                y="2.5"
+                x="2.5"
+              ></rect>
+              <line
+                stroke-width="5"
+                stroke="#e05452"
+                y2="75"
+                x2="63.5"
+                x1="63.5"
+              ></line>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M25 20H50"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M101 20H76"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M16 30L50 30"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M110 30L76 30"
+              ></path>
+            </svg>
+        
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#ffffff74"
+              viewBox="0 0 65 75"
+              class="book-page"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M40 20H15"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M49 30L15 30"
+              ></path>
+              <path
+                stroke-width="5"
+                stroke="#e05452"
+                d="M2.5 2.5H55C59.1421 2.5 62.5 5.85786 62.5 10V65C62.5 69.1421 59.1421 72.5 55 72.5H2.5V2.5Z"
+              ></path>
+            </svg>
+          </div>
+      </div>
+        
+  </div>
     
 </div>
 

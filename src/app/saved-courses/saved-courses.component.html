@@ -1,0 +1,41 @@
+<div class="profile-page">
+    <button class="hamburger-menu" (click)="toggleLeftBar()">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </button>
+
+    <div class="left-bar" [class.show]="isLeftBarOpen">
+        <a class="options" (click)="goToProfile()">Profile</a>
+        <a class="options" (click)="goToWallet()">Wallet</a>
+        <a class="options" (click)="goToSavedCoures()">Saved Courses</a>
+        <a class="options">Reviews</a>
+        <a class="options">Edit Profile</a>
+
+    </div>
+
+    <div class="user-details">
+
+        <ng-container>
+            <div class="card-container">
+                <div class="card" *ngFor="let topic of platformLists">
+                    <div class="image-container">
+                      <div><img [src]="topic.imagePath" alt="imageLocation"></div>   
+                        <div class="price">₹{{topic.price}}</div>
+                    </div>
+                    <div class="description">
+                        <div class="brand">{{topic.platformName}}</div>
+                        <div class="product-desc">
+                            {{topic.desc}}
+                        </div>
+                        <div class="rating">{{topic.rating}}(29,062)</div>
+                    </div>
+                    <div class="button-container">
+                        <button class="buy-button button">Check it</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container> 
+    </div>
+</div>
+

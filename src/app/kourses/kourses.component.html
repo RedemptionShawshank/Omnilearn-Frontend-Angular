@@ -1,38 +1,175 @@
 
 
-<form class="search-bar">
-    <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
-    <button type="submit">Search</button>
-</form>
-<div class="wrapper">
-
-    <ng-container  *ngFor="let topic of courseDetails">
-        <ng-container *ngIf="topic.topicName === imageName">
-            <!-- <form class="search-bar">
-                <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
-                <button type="submit">Search</button>
-            </form> -->
-            <ul class="card-container">
-                <li class="card" *ngFor="let item of topic.courses|filter:filteredString" >
-                    <div class="poster"><img [src]="item.imagePath" alt="Location Unknown"></div>
-                    <div class="details">
-                        <h1>{{item.CourseName}}</h1>
-                        <div class="rating">
-                            <span>4.2/5</span>
-                        </div>
-                        <div class="tags">
+<div class="main-body">
+    
+    <form class="search-bar">
+        <input type="search" (input)="loaderOnInput($event)" placeholder="Search for desired learning platform" [(ngModel)]="platformName" [ngModelOptions]="{ standalone: true }" class="search-input">
+    </form>
+    
+    <div class="wrapping_2_divs">
+    
+        <div class="slider">
+            <div>
+                <h3>Filter by Price</h3>
+                <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" id="slider-element"></ngx-slider>
+                
+            </div>
+    
+            <div class="filter-button">
+    
+                <div class="w-full h-10 flex items-center justify-center" (click)="filterCoursesByPrice(minValue,maxValue,imageName)">
+                    <a class="relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
+                      <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                      <span class="relative">FILTER</span>
+                    </a>
+                </div>
+    
+                <div class="w-full h-10 flex items-center justify-center" (click)="resetFilter()">
+                    <a class="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-xl group">
+                      <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
+                        <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
+                      </span>
+                      <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-red-600 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                      <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">RESET</span>
+                    </a>
+                </div>
+    
+            </div>
+    
+    
+    
+    
+        </div>
         
-                        </div>
-                        <p class="desc">
-                            {{item.description}}
-                        </p>
-                        <div class="cast">
-                            <h3>Cast</h3>
+        <div class="wrapper" *ngIf="showFullListOfCourses && !loading">
+        
+            <ng-container  >
+
+                    <!-- <form class="search-bar">
+                        <input type="search" placeholder="Search..." [(ngModel)]="filteredString" [ngModelOptions]="{ standalone: true }">
+                        <button type="submit">Search</button>
+                    </form> -->
+                    <div class="card-container">
+
+                        <div class="card" *ngFor="let topic of platformLists|filter:platformName">
+                            <div class="image-container">
+                              <div><img [src]="topic.imagePath" alt="imageLocation"></div>   
+                                <div class="price">₹{{topic.price}}</div>
+                            </div>
+                          
+                          
+                            <div class="description">
+                                <div class="brand">{{topic.platformName}}</div>
+                                <div class="product-desc">
+                                    {{topic.desc}}
+                                </div>
+                          
+                                <div class="rating">{{topic.rating}}(29,062)</div>
+                            </div>
+                          
+                            <div class="button-container">
+                                <button class="buy-button button">Check it</button>
+                          
+                                <label class="favorite" *ngIf="isLoggedIn">
+                                  <input type="checkbox" [checked]="favouriteCourseId.includes(topic.id)" (change)="handleFavoriteCourse($event,topic)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+                                      <path d="M12 20a1 1 0 0 1-.437-.1C11.214 19.73 3 15.671 3 9a5 5 0 0 1 8.535-3.536l.465.465.465-.465A5 5 0 0 1 21 9c0 6.646-8.212 10.728-8.562 10.9A1 1 0 0 1 12 20z"></path>
+                                  </svg>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </ng-container>
-    </ng-container >
+            </ng-container>
+
+        </div>
+    
+        <div class="wrapper" *ngIf="!showFullListOfCourses && !loading">
+        
+            <!-- this div is when we have applied filter and now i want to use the searchbox to find courses for platform of our desire -->
+
+            <div class="card-container">
+
+                <div class="card" *ngFor="let topic of filteredCourses|filter:platformName">
+                    <div class="image-container">
+                      <div><img [src]="topic.imagePath" alt="imageLocation"></div>   
+                        <div class="price">₹{{topic.price}}</div>
+                    </div>
+                  
+                  
+                    <div class="description">
+                        <div class="brand">{{topic.platformName}}</div>
+                        <div class="product-desc">
+                            {{topic.desc}}
+                        </div>
+                  
+                        <div class="rating">{{topic.rating}}(29,062)</div>
+                    </div>
+                  
+                    <div class="button-container">
+                        <button class="buy-button button">Check it</button>
+                        
+                        
+                        <label class="favorite" *ngIf="isLoggedIn">
+                            <input type="checkbox" (change)="handleFavoriteCourse($event,topic)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+                                <path d="M12 20a1 1 0 0 1-.437-.1C11.214 19.73 3 15.671 3 9a5 5 0 0 1 8.535-3.536l.465.465.465-.465A5 5 0 0 1 21 9c0 6.646-8.212 10.728-8.562 10.9A1 1 0 0 1 12 20z"></path>
+                            </svg>
+                        </label>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="wrapper-no-result" *ngIf="showNoResult">
+            OOPS!!! No such platform available :( 
+        </div>
+    
+        <div class="wrapper-loader" id="loader">
+            <div *ngIf="loading" class="boxes">
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <div class="wrapper-loader">
+            <div *ngIf="isLoading"  class="blob"></div>
+        </div> -->
+    
+        
+    </div>
+    
+    
+    
+
 </div>
+
+
+
+
+
 
