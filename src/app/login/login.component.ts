@@ -47,6 +47,18 @@ export class LoginComponent {
 
   onSubmit(){
     console.log(this.user);
+    const email = this.user.emailId;
+    var username:any = '';
+    for(var i=0;i<email.length;i++){
+      if(email.charAt(i)!='@'){
+        username += email.charAt(i);
+      }
+      else{
+        break;
+      }
+    }
+    localStorage.setItem('userName',username);
+    console.log("user input",this.user);
     this.saveUserInfo(); //sending the submited info to backend so that it can be saved into database
 
   }
@@ -58,16 +70,19 @@ export class LoginComponent {
   loginCheck(){
 
     this.service.sendLoginInfo(this.loginInfo).subscribe((data)=>{
-      console.log(data);
+      console.log("received data",data);
       if(data !=null){
-        // console.log("returned data: ",data);
-        this.service.loginStatus(true);
-        // this.router.navigate(['/home']);
-        // this.reloadPage();
+
+        this.service.loginStatus(true); // this method in service updates the value of login flag and also stores it in local storage 
+
         this.service.notifyComponentBRefresh();
 
         this.receivedInfo = data;
-        // console.log("received: ",this.receivedInfo.id);
+        this.service.username = this.receivedInfo.username;
+        console.log("username: ",this.receivedInfo.username);
+
+        localStorage.setItem('userName',this.receivedInfo.username);
+
       }
       else{
         this.service.loginStatus(false);
@@ -77,8 +92,6 @@ export class LoginComponent {
   }
 
   onSubmitLoginInfo(){
-    // console.log("login information: ",this.loginInfo);
     this.loginCheck();
-
   }
 }

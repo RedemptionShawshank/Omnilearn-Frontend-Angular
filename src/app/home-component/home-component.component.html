@@ -1,43 +1,59 @@
-<header class="header-v3-wrapper justify-content-center h-18 w-100-p ng-tns-c64-0">
+<header>
 
   <div class="buttons-top">
     
     <div class="website-name">
-      <h1 class="animated-text" role="banner" (click)="goToHomepage()">CourseBay</h1>
-    </div>  
+      <h1 class="animated-text" role="banner" (click)="goToHomepage()">OmniLearn</h1>
+    </div>
+    
+    <div class="login-button" (click)="openOverlay()" *ngIf="!login">
+        <button>
+          <span class="span-mother">
+            <span>S</span>
+            <span>i</span>
+            <span>g</span>
+            <span>n</span>
+            <span>I</span>
+            <span>n</span>
+          </span>
+          <span class="span-mother2">
+            <span>S</span>
+            <span>i</span>
+            <span>g</span>
+            <span>n</span>
+            <span>I</span>
+            <span>n</span>
+          </span>
+        </button>
+    </div>
+ 
+    <div class="btn" (mouseover) ="showDropDown()" *ngIf="login"></div>
 
-
-    <div class="wallet-button">
-      <div class=" w-full h-20 flex items-center justify-center">
-        <a class="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-white border border-gray-100 rounded-lg shadow-inner group">
-          <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
-          <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
-          <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
-          <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
-          <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
-          <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Wallet</span>
-        </a>
-      </div>
+    <div class="options" *ngIf="isHovered" (mouseleave)="showDropDown()">
+        <a (click)="navigateToProfile()">Profile</a>
+        <a (click)="logOut()">Logout</a>
     </div>
 
-
-    <div class="login-button">
-      <div class="w-full h-20 flex items-center justify-center">
-        <a (click)="openOverlay()" class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold shadow text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
-          <span class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-600 group-hover:h-full"></span>
-          <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
-            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </span>
-          <span class="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
-            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </span>
-          <span class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">Login</span>
-        </a>
+    <!-- <button mat-fab class="btn" matTooltip="Click to expand" (click)="showDropDown()" *ngIf="login"></button>
+    <div class="dropdown" *ngIf="isHovered">
+      <button mat-fab class="btn" matTooltip="Click to expand" (click)="showDropDown()" *ngIf="login"></button>
+      <div class="dropdown-content">
+        <div class="opt" (click)="navigateToProfile()">Profile</div>
+        <br>
+        <div class="opt" (click)="logOut()">Logout</div>
       </div>
-    </div>
+    </div> -->
+
+
+
+    <!-- <div class="dropdown" *ngIf="isHovered">
+      <button class="dropbtn"><i class="fa fa-bars"></i></button>
+      <div class="dropdown-content">
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+      </div>
+    </div> -->
+
   </div>
 </header>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,6 +22,7 @@ export class ProfilePageComponent {
   isWallet: boolean = false;
   userdata!: userInfo;
 
+
   constructor(private router:Router,private dialog : MatDialog,private service:StateService){
 
     this.userdata = service.receivedInfo;
@@ -30,6 +31,7 @@ export class ProfilePageComponent {
       const parsedUser = info ? JSON.parse(info) : null;
       this.userdata = parsedUser;
     }
+
 
   }
 
@@ -46,12 +48,34 @@ export class ProfilePageComponent {
 
   goToProfile(){
     this.router.navigate(['/username/profilePage']);
-
   }
 
   goToWallet(){
     this.router.navigate(['/username/wallet']);
 
   }
+
+  goToSavedCoures(){
+    const username = localStorage.getItem('userName');
+    this.router.navigate(['username/savedCourses']);
+  }
+
+  isLeftBarOpen: boolean = false;
+
+  toggleLeftBar() {
+    this.isLeftBarOpen = !this.isLeftBarOpen;
+  }
+
+  // showButton: boolean = false;
+
+  //   @HostListener('window:resize', ['$event'])
+  //   onResize(event:any) {
+  //       // Update showButton based on window width
+
+  //       if(window.outerWidth < 901){
+  //         this.showButton = true;
+  //       }
+
+  //   }
 
 }

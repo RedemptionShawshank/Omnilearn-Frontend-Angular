@@ -36,6 +36,11 @@ export class UserWalletComponent implements OnInit {
 
   }
 
+  goToSavedCoures(){
+    const username = localStorage.getItem('userName');
+    this.router.navigate(['username/savedCourses']);
+  }
+
   users!: User[];
 
   ngOnInit(): void {

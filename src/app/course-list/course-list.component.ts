@@ -13,12 +13,11 @@ import { Subscription } from 'rxjs';
 })
 export class CourseListComponent implements OnInit {
 
-  showTopicList:boolean = true;
+  showTopicList:boolean;
   courseFilter: string = '';
   loading: boolean = false;
   login:boolean = false;
 
-  // private subscription: Subscription;
 
 
   @ViewChild('searchResults') searchResultsRef!: ElementRef;
@@ -26,61 +25,21 @@ export class CourseListComponent implements OnInit {
 
   constructor(private router:Router,private dialog : MatDialog,private userService: StateService) {
 
+    // const storedValue: string | null = localStorage.getItem('topicListFlag');
+    
 
-
-    // this.subscription = this.userService.isVariableEnabled$.subscribe(enabled => {
-    //   if(localStorage.getItem('isVariableEnabled') == null ){
-    //     this.login = enabled;
-    //   }
-    //   if(!Boolean(localStorage.getItem('isVariableEnabled'))){
-    //     this.login = enabled;
-    //   }
-
-    //   console.log("old value in subscription: ",localStorage.getItem('isVariableEnabled'))
-
-    // });
-
-    // console.log("old value: ",localStorage.getItem('isVariableEnabled'));
-
-
-    // if(localStorage.getItem('isVariableEnabled') != null){
-    //   this.login = Boolean(localStorage.getItem('isVariableEnabled'));
-
+    // if(storedValue === 'true'){
+    //   this.showTopicList = true;
     // }
-
-    // if(Boolean(localStorage.getItem('loginStatus'))){
-    //   this.login = Boolean(localStorage.getItem('loginStatus'));
+    // else{
+    //   this.showTopicList = false;
     // }
+    // console.log("courseLists component showTopicList: ",this.showTopicList);
 
-    // localStorage.clear();
-
-    console.log("came into course list component");
-
-    const storedValue: string | null = localStorage.getItem('loginStatus');
-
-    console.log("login before in constructor: ",this.login);
-    if(storedValue === 'true'){
-      this.login = true;
-    }
-    else{
-      this.login = false;
-    }
-
-    console.log("login after in constructor: ",this.login);
+    this.showTopicList=userService.getTopicListFlag();
+    console.log("courseLists component showTopicList: ",this.showTopicList);
 
 
-
-
-  }
-
-  logOut() {
-
-    this.login = false;
-    // console.log("logout value: ",this.login);
-    // console.log("before setting: ",localStorage.getItem('isVariableEnabled'))
-    localStorage.setItem('loginStatus', String(this.login));
-    // console.log("after setting: ",localStorage.getItem('isVariableEnabled'))
-    window.scrollTo({top:0,behavior:'smooth'});
   }
 
   navigateToKourses(imageName: string){
@@ -94,91 +53,33 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
 
     this.getTopicList();
-
-    this.userService.componentBRefresh.subscribe(() => {
-      this.refreshComponent();
+    this.userService.courselistRefreshTopicList.subscribe(() =>{
+      this.topicListRefresh();
     });
 
+    if (this.userService.isBackNavigation()) {
 
-    
+      this.showTopicList = true;
+      this.userService.resetBackNavigationFlag();
+    }
+ 
   }
 
-  refreshComponent(){
-
-    console.log("login before in refresh: ",this.login);
-    const storedValue1: string | null = localStorage.getItem('loginStatus');
-
-    if(storedValue1 === 'true'){
-      this.login = true;
-    }
-    else{
-      this.login = false;
-    }
-
-    console.log("login after in refresh: ",this.login);
+  topicListRefresh(){
+    this.showTopicList = this.userService.getTopicListFlag();
 
   }
+
 
 
   private getTopicList(){
     this.userService.getTopicList().subscribe(data =>{
       this.topicList = data;
-      console.log("topic list: ",this.topicList);
+      // console.log("topic list: ",this.topicList);
     });
 
   }
 
-
-  // topicList = [
-  //   {
-  //     topicName:'DSA',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'MACHINE LEARNING',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'WEB DEVELOPMENT',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'SPRING BOOT',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'DSA',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'SPRING BOOT',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'DSA',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'SPRING BOOT',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'DSA',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'MACHINE LEARNING',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'MACHINE LEARNING',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   },
-  //   {
-  //     topicName:'WEB DEVELOPMENT',
-  //     imagePath:'assets/images_courses/web-development.png'
-  //   }
-  // ];
 
     //loader
   loaderOnInput(event: any){
@@ -213,31 +114,30 @@ export class CourseListComponent implements OnInit {
     });
   }
 
-  goToHomepage(){
-    this.router.navigate(['/home']);
-  }
+  // goToHomepage(){
+  //   this.router.navigate(['/home']);
+  // }
   
-  isHovered: boolean = false;
+  // isHovered: boolean = false;
 
-  showDropDown(){
+  // showDropDown(){
 
-    this.isHovered = !this.isHovered;
+  //   this.isHovered = !this.isHovered;
 
-  }
+  // }
 
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-    if (!((event.target as HTMLElement).closest('.btn') || (event.target as HTMLElement).closest('.options'))) {
-      this.isHovered = false;
-    }
-  }
+  // @HostListener('document:click', ['$event'])
+  // onClickOutside(event: Event) {
+  //   if (!((event.target as HTMLElement).closest('.btn') || (event.target as HTMLElement).closest('.options'))) {
+  //     this.isHovered = false;
+  //   }
+  // }
 
-  navigateToProfile() {
-    // Implement navigation to profile 
-    this.showTopicList = false;
-    this.router.navigate(['/username/profilePage']);
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
+  // navigateToProfile() {
+  //   this.showTopicList = false;
+  //   this.router.navigate(['/username/profilePage']);
+  //   window.scrollTo({top:0,behavior:'smooth'});
+  // }
 
 
 

@@ -19,6 +19,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
+import { SavedCoursesComponent } from './saved-courses/saved-courses.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SocialMediaComponent,
     UserWalletComponent,
     UserInfoComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    FooterComponent,
+    SavedCoursesComponent
   ],
   imports: [
     BrowserModule,
