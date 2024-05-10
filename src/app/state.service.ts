@@ -44,7 +44,7 @@ export class StateService {
   getTopicListFlag():boolean{
 
     const storedValue: string | null = localStorage.getItem('topicListFlag');
-    
+
     if(storedValue === 'true'){
       this.topicList = true;
       return this.topicList;
@@ -74,7 +74,7 @@ export class StateService {
     this.backNavigationFlag = false;
   }
 
-  // this method in service updates the value of login flag and also stores it in local storage 
+  // this method in service updates the value of login flag and also stores it in local storage
   loginStatus(status: boolean): void {
     this.login = status;
     localStorage.setItem('loginStatus', String(this.login));
@@ -86,11 +86,11 @@ export class StateService {
     this.courseListCompTrigger.next();
   }
 
-  private baseURL = "http://localhost:8080";
-  private baseURLuserList = "http://localhost:8080/api/v1/users";
-  private baseURLtopicList  = "http://localhost:8080/api/v1/topic_list";
-  private baseURLaddUserInfo = "http://localhost:8080/api/v1/userInfo";
-  private baseURLloginInfo = "http://localhost:8080/api/v1/loginInfo";
+  private baseURL = "https://incredible-trust-production.up.railway.app";
+  private baseURLuserList = "https://incredible-trust-production.up.railway.app/api/v1/users";
+  private baseURLtopicList  = "https://incredible-trust-production.up.railway.app/api/v1/topic_list";
+  private baseURLaddUserInfo = "https://incredible-trust-production.up.railway.app/api/v1/userInfo";
+  private baseURLloginInfo = "https://incredible-trust-production.up.railway.app/api/v1/loginInfo";
 
   getUserList():Observable<User[]>{
 
@@ -106,11 +106,11 @@ export class StateService {
 
     this.topicName = data;
 
-    this.httpClient.post<string>('http://localhost:8080/api/v1/path-variable',data).subscribe(value =>{
+    this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/path-variable',data).subscribe(value =>{
       this.receivedPlatformList = value;
     });
 
-    return this.httpClient.post<string>('http://localhost:8080/api/v1/path-variable',data);
+    return this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/path-variable',data);
   }
 
   getFavouriteList(userName:string,topicName:string):Observable<FavouriteList[]>{
@@ -118,15 +118,15 @@ export class StateService {
       userName:userName,
       topicName:topicName
     };
-    return this.httpClient.post<FavouriteList[]>('http://localhost:8080/api/v1/favList',body);
+    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/favList',body);
   }
 
   getFavouriteListByUsername(userName:string):Observable<FavouriteList[]>{
-    return this.httpClient.post<FavouriteList[]>('http://localhost:8080/api/v1/userFavlist',userName);
+    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/userFavlist',userName);
   }
 
   addFavourite(favorite: FavouriteList):Observable<FavouriteList[]>{
-    return this.httpClient.post<FavouriteList[]>('http://localhost:8080/api/v1/addFavourite',favorite);
+    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/addFavourite',favorite);
   }
 
   addUserinfo(user: User): Observable<Object>{ // if we don't know what is the response type of our api, we can add "Object or any" type in Observable
