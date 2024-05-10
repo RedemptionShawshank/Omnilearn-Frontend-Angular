@@ -57,5 +57,11 @@ export class UserWalletComponent implements OnInit {
 
   }
 
+  isLeftBarOpen: boolean = false;
+
+  toggleLeftBar() {
+    this.isLeftBarOpen = !this.isLeftBarOpen;
+  }
+
 
 }

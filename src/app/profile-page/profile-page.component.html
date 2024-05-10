@@ -1,13 +1,4 @@
 <div class="profile-page">
-    <!-- <div class="left-bar">
-
-        <a class="options" (click)="goToProfile()">Profile</a>
-        <a class="options" (click)="goToWallet()">Wallet</a>
-        <a class="options" (click)="goToSavedCoures()">Saved Courses</a>
-        <a class="options">Reviews</a>
-        <a class="options">Edit Profile</a>
-
-    </div> -->
 
     <button class="hamburger-menu" (click)="toggleLeftBar()">
       <span class="line"></span>
@@ -27,30 +18,14 @@
     
 
     <div class="user-details">
-
         <div class="card">
-            <!-- <div class="profile-pic">
-                <img src="assets/images_courses/web-development.png" alt="pic">
-            </div>
-    
-            <div class="bottom">
-                <div class="content">
-                    <div>
-                      <span class="name">{{userdata.username}}</span>
-                      <span class="about-me">{{userdata.emailId}}</span>
-                      <span>National Institue of Technology Silchar</span>
-                    </div>
-
-                </div>
-                <div class="bottom-bottom">
-
-                    <span></span>
-                </div>
-            </div> -->
-
-            <div>
-              <img src="assets/images_courses/web-development.png" alt="pic">
-            </div>
+          <div >
+            <img class="card-img" src="assets/images_courses/web-development.png" alt="pic">
+          </div>
+          <div class="card-info">
+            <p class="text-title">{{userdata.username}}</p>
+            <p class="text-body">{{userdata.emailId}}</p>
+          </div>
         </div>
 
 

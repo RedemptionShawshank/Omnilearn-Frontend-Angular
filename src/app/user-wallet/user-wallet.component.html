@@ -1,15 +1,20 @@
 
   
 <div class="profile-page">
-    <div class="left-bar">
+  <button class="hamburger-menu" (click)="toggleLeftBar()">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </button>
 
-        <span class="options" (click)="goToProfile()">Profile</span>
-        <span class="options" (click)="goToWallet()">Wallet</span>
-        <span class="options" (click)="goToSavedCoures()">Saved Courses</span>
-        <span class="options">Reviews</span>
-        <span class="options">Edit Profile</span>
+  <div class="left-bar" [class.show]="isLeftBarOpen">
+      <a class="options" (click)="goToProfile()">Profile</a>
+      <a class="options" (click)="goToWallet()">Wallet</a>
+      <a class="options" (click)="goToSavedCoures()">Saved Courses</a>
+      <a class="options">Reviews</a>
+      <a class="options">Edit Profile</a>
 
-    </div>
+  </div>
 
     <div class="user-details">
       <div class="wallet-container">
