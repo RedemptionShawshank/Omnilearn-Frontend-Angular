@@ -817,4 +817,91 @@
   
   }
   
+  @media (max-width: 440px) {
+
+    .buttons-top{
+      background-color: rgb(248, 184, 177);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      border-radius: 7px;
+      display: flex;
+      z-index: 1000;
+      position:fixed;
+      width: 100%;
+      top:0;
+    }
+
+    .animated-text {
+      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
+      padding-left: 15px;
+      font-size: 30px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .login-button {
+      margin-top: 2.5%;
+      margin-left: 30%;
+    }
+
+    .btn {
+      height: 45px;
+      width: 45px;
+      border-radius: 45px;
+  
+      margin-left:40%;
+      margin-top: 2.5%;
+    }
+
+    .options{
+      height: 10%;
+      width: 15%;
+      margin-left: 80%;
+      margin-top: 12%;
+    }
+
+  
+  }
+  
+  @media (max-width: 370px) {
+
+    .buttons-top{
+      background-color: rgb(248, 184, 177);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      border-radius: 7px;
+      display: flex;
+      z-index: 1000;
+      position:fixed;
+      width: 100%;
+      top:0;
+    }
+
+    .animated-text {
+      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
+      padding-left: 15px;
+      font-size: 30px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .login-button {
+      margin-top: 2.5%;
+      margin-left: 20%;
+    }
+
+    .btn {
+      height: 45px;
+      width: 45px;
+      border-radius: 45px;
+  
+      margin-left:30%;
+      margin-top: 2.5%;
+    }
+
+    .options{
+      height: 10%;
+      width: 15%;
+      margin-left: 80%;
+      margin-top: 12%;
+    }
+
+  
+  }
   
