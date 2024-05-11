@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 import { StateService } from '../state.service';
 import { LoginInfo } from '../login-info';
+import { MatDialogRef } from '@angular/material/dialog';
 
 interface userInfo {
   id: number;
@@ -26,7 +27,7 @@ export class LoginComponent {
 
   receivedInfo!: any;
 
-  constructor (private service:StateService,private router:Router){}
+  constructor (private service:StateService,private router:Router,private dialogRef: MatDialogRef<LoginComponent>){}
 
   toggleSignUp(){
     this.signUp = !this.signUp;
@@ -36,6 +37,12 @@ export class LoginComponent {
   toggleSignIn(){
     this.signIn = !this.signIn;
     this.signUp = !this.signUp;
+  }
+
+  closeDialog():void{
+    console.log('Closing dialog...');
+    this.dialogRef.close();
+
   }
 
   saveUserInfo(){
