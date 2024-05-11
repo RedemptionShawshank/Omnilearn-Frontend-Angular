@@ -73,7 +73,6 @@
   position: relative;
   overflow: visible;
   box-shadow: #604b4a30 0px 70px 30px -50px;
-  /* border-radius: 32px; */
   margin-left: 50px;
  }
  
@@ -510,17 +509,6 @@ li{
     display: grid;
   }
 
-  .card {
-    /* margin-top: 40%; */
-    width: 100px;
-    height: 125px;
-    padding: .8em;
-    background: #ffffff;
-    position: relative;
-    overflow: visible;
-    box-shadow: #604b4a30 0px 70px 30px -50px;
-    border-radius: 32px;
-   }
 
   .hamburger-menu {
     position: fixed;
@@ -562,6 +550,63 @@ li{
   
 }
 
+
+@media (max-width:440px){
+
+  .profile-page{
+    height: 900px;
+    width: 100%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 20% ;
+    display: flex;
+    gap: 1%;
+  }
+
+  .user-details{
+    display: grid;
+  }
+
+
+  .hamburger-menu {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    display: block;
+  }
+  
+  .line {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: #f8f2f2;
+    margin: 5px auto;
+  }
+
+  .left-bar {
+    position: fixed;
+    left: -25%; /* Initially hidden */
+    width: 20%;
+    height: 50%;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(242, 242, 243);
+    transition: left 0.3s ease;
+    z-index: 800;
+  }
+  
+  .left-bar.show {
+    left: 0; /* Slide in when visible */
+  }
+  
+}
 
  
 

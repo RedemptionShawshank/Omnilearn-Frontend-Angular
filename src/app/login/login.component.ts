@@ -46,7 +46,7 @@ export class LoginComponent {
   }
 
   onSubmit(){
-    console.log(this.user);
+    // console.log("signed up user details: ",this.user);
     const email = this.user.emailId;
     var username:any = '';
     for(var i=0;i<email.length;i++){
@@ -57,8 +57,9 @@ export class LoginComponent {
         break;
       }
     }
+    this.user.username = username;
     localStorage.setItem('userName',username);
-    console.log("user input",this.user);
+    // console.log("user input",this.user);
     this.saveUserInfo(); //sending the submited info to backend so that it can be saved into database
 
   }
