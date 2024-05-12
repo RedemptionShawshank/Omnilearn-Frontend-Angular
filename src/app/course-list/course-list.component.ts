@@ -116,7 +116,7 @@ export class CourseListComponent implements OnInit {
   }
 
 
-    //loader
+    //loader  (input)="loaderOnInput($event)"
   loaderOnInput(event: any){
     // Show loader when input changes
     this.loading = true;

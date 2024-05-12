@@ -12,7 +12,7 @@
       <br>
       <br>
       <form class="search-bar">
-          <input type="search" (input)="loaderOnInput($event)" (click)="scrollToSearchResults()" placeholder="Search..." [(ngModel)]="courseFilter" [ngModelOptions]="{ standalone: true }" #searchResults class="search-input">
+          <input type="search" (click)="scrollToSearchResults()" placeholder="Search..." [(ngModel)]="courseFilter" [ngModelOptions]="{ standalone: true }" #searchResults class="search-input">
           <!-- <button type="submit">Search</button> -->
       </form>
 
@@ -40,7 +40,7 @@
       </div>
   </div>
 
-  <div class="loader-content" *ngIf="loading" #searchResults >
+  <!-- <div class="loader-content" *ngIf="loading" #searchResults >
       <div class="loader">
           <div class="book-wrapper">
             <svg
@@ -118,7 +118,7 @@
           </div>
       </div>
         
-  </div>
+  </div> -->
     
 </div>
 
