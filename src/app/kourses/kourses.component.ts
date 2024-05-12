@@ -120,7 +120,7 @@ export class KoursesComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  //loader
+  //loader (input)="loaderOnInput($event)"
   loaderOnInput(event: any){
     // Show loader when input changes
     this.loading = true;

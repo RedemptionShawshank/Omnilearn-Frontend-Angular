@@ -3,7 +3,7 @@
 <div class="main-body">
     
     <form class="search-bar">
-        <input type="search" (input)="loaderOnInput($event)" placeholder="Search for desired learning platform" [(ngModel)]="platformName" [ngModelOptions]="{ standalone: true }" class="search-input">
+        <input type="search" placeholder="Search for desired learning platform" [(ngModel)]="platformName" [ngModelOptions]="{ standalone: true }" class="search-input">
     </form>
     
     <div class="wrapping_2_divs">
@@ -123,7 +123,7 @@
 
         </div>
         
-        <div class="wrapper-no-result" *ngIf="showNoResult">
+        <!-- <div class="wrapper-no-result" *ngIf="showNoResult">
             OOPS!!! No such platform available :( 
         </div>
     
@@ -154,7 +154,7 @@
                     <div></div>
                 </div>
             </div>
-        </div>
+        </div> -->
     
         <!-- <div class="wrapper-loader">
             <div *ngIf="isLoading"  class="blob"></div>
