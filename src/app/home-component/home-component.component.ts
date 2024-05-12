@@ -12,7 +12,6 @@ import { StateService } from '../state.service';
 export class HomeComponentComponent implements OnInit {
 
   login:boolean = false;
-  showTopicList!:boolean;
 
   constructor(private dialog : MatDialog,private router:Router,private service:StateService) {
 
@@ -27,8 +26,6 @@ export class HomeComponentComponent implements OnInit {
         else{
           this.login = false;
         }
-
-        this.showTopicList = service.getTopicListFlag();
   }
 
   ngOnInit(): void {
@@ -74,12 +71,12 @@ export class HomeComponentComponent implements OnInit {
 
   }
 
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-    if (!((event.target as HTMLElement).closest('.btn') || (event.target as HTMLElement).closest('.options'))) {
-      this.isHovered = false;
-    }
-  }
+  // @HostListener('document:click', ['$event'])
+  // onClickOutside(event: Event) {
+  //   if (!((event.target as HTMLElement).closest('.btn') || (event.target as HTMLElement).closest('.options'))) {
+  //     this.isHovered = false;
+  //   }
+  // }
 
   navigateToProfile() {
     // Implement navigation to profile 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -61,6 +61,11 @@ export class UserWalletComponent implements OnInit {
 
   toggleLeftBar() {
     this.isLeftBarOpen = !this.isLeftBarOpen;
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: Event) {
+    localStorage.setItem('lastRoute', this.router.url);
   }
 
 
