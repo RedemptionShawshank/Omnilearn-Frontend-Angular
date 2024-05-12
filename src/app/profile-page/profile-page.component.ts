@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ interface userInfo {
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css'
 })
-export class ProfilePageComponent {
+export class ProfilePageComponent implements OnInit {
 
   isProfile: boolean = true;
   isWallet: boolean = false;
@@ -32,7 +32,18 @@ export class ProfilePageComponent {
       this.userdata = parsedUser;
     }
 
+    
 
+
+  }
+  ngOnInit(): void {
+
+    // window.addEventListener('popstate', (event) => {
+    //   console.log("popstate:",event);
+    //   if (event.state !== 'null') {
+    //     this.onPopState();
+    //   }
+    // });
   }
 
   openOverlay(): void {
@@ -66,16 +77,30 @@ export class ProfilePageComponent {
     this.isLeftBarOpen = !this.isLeftBarOpen;
   }
 
-  // showButton: boolean = false;
+  // onPopState() {
+  //   this.service.setTopicListFlag(true);
+  //   this.service.setReloadFlag(false);
+  // }
 
-  //   @HostListener('window:resize', ['$event'])
-  //   onResize(event:any) {
-  //       // Update showButton based on window width
-
-  //       if(window.outerWidth < 901){
-  //         this.showButton = true;
-  //       }
-
+  // @HostListener('window:popstate', ['$event'])
+  // onPopState(event:Event) {
+  //   if(event !==null){
+  //     console.log("back pressed",event);
+  //     this.service.setTopicListFlag(true);
+  //     localStorage.setItem('lastRoute', this.router.url);
   //   }
+  //   else{
+  //     console.log("back pressed",event);
+  //   }
+
+
+  // }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: Event) {
+    localStorage.setItem('lastRoute', this.router.url);
+  }
+
+
 
 }

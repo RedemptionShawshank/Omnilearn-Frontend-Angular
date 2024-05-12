@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,HostListener,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Options,LabelType } from '@angular-slider/ngx-slider';
 import { MatDialog } from '@angular/material/dialog';
@@ -45,9 +45,20 @@ export class KoursesComponent implements OnInit {
     private service:StateService
   ) {
       const paramValue = this.route.snapshot.params;
-      console.log('Route parameter value:', paramValue);
+      // console.log('Route parameter value:', paramValue);
 
     }
+
+  // @HostListener('window:popstate', ['$event'])
+  // onPopState(event: Event) {
+  //   this.service.setTopicListFlag(true);
+  // }
+
+  // @HostListener('window:beforeunload', ['$event'])
+  // beforeUnloadHandler(event: Event) {
+
+  //   localStorage.setItem('lastRoute', this.router.url);
+  // }
 
   ngOnInit() {
     // Use ActivatedRoute to get the route parameters
@@ -275,7 +286,7 @@ export class KoursesComponent implements OnInit {
       }
     );
 
-    console.log("updated fav list",)
+    // console.log("updated fav list",)
   }
 
   handleFavoriteCourse(event:any,topic:PlatformCourseList){

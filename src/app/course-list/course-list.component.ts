@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class CourseListComponent implements OnInit {
 
-  showTopicList:boolean;
+  showTopicList!:boolean  ;
   courseFilter: string = '';
   loading: boolean = false;
   login:boolean = false;
@@ -25,25 +25,54 @@ export class CourseListComponent implements OnInit {
 
   constructor(private router:Router,private dialog : MatDialog,private userService: StateService) {
 
-    // const storedValue: string | null = localStorage.getItem('topicListFlag');
-    
-
-    // if(storedValue === 'true'){
-    //   this.showTopicList = true;
-    // }
-    // else{
-    //   this.showTopicList = false;
-    // }
+    // localStorage.clear();
+    this.showTopicList=userService.getTopicListFlag();
+    console.log("on constructor show topic list",this.showTopicList);
     // console.log("courseLists component showTopicList: ",this.showTopicList);
 
-    this.showTopicList=userService.getTopicListFlag();
-    console.log("courseLists component showTopicList: ",this.showTopicList);
+
+    // if(userService.getReloadFlag()){
 
 
+    // }
+
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:Event) {
+    console.log("inside forward button",event);
+
+
+    this.userService.setTopicListFlag(false);
+
+    // localStorage.setItem('lastRoute', this.router.url);
+
+  }
+
+  // @HostListener('window:beforeunload', ['$event'])
+  // beforeUnloadHandler(event: Event) {
+  //   this.userService.setReloadFlag(true);
+  //   localStorage.setItem('lastRoute', this.router.url);
+  // }
+
+  // @HostListener('window:beforeunload', ['$event'])
+  // onPopState(event: any) {
+
+  //   const storedRoute = localStorage.getItem('lastRoute');
+  //   console.log(storedRoute);
+  //   if (storedRoute) {
+  //     this.router.navigateByUrl(storedRoute);
+  //   }
+  // }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: Event) {
+    localStorage.setItem('lastRoute', this.router.url);
   }
 
   navigateToKourses(imageName: string){
     this.showTopicList = false;
+    this.userService.setTopicListFlag(this.showTopicList);
     this.router.navigate(['/courses',imageName]);
     window.scrollTo({top:0,behavior:'smooth'});
   }
@@ -57,11 +86,18 @@ export class CourseListComponent implements OnInit {
       this.topicListRefresh();
     });
 
-    if (this.userService.isBackNavigation()) {
 
+    if (this.userService.isBackNavigation()) {
+      console.log("entered here for back");
       this.showTopicList = true;
+      // this.userService.setTopicListFlag(this.showTopicList);
       this.userService.resetBackNavigationFlag();
     }
+    // else{
+    //   this.showTopicList = this.userService.getTopicListFlag();
+    // }
+
+    console.log("courseLists component showTopicList: ",this.showTopicList);
  
   }
 
@@ -75,7 +111,6 @@ export class CourseListComponent implements OnInit {
   private getTopicList(){
     this.userService.getTopicList().subscribe(data =>{
       this.topicList = data;
-      // console.log("topic list: ",this.topicList);
     });
 
   }
@@ -93,19 +128,10 @@ export class CourseListComponent implements OnInit {
     }, 2000); // Adjust the delay as needed
   }
 
-  // scrollToSearchResults() {
-  //   console.log("scrollTargetRef",this.scrollTargetRef);
-  //   if (this.searchResultsRef && this.searchResultsRef.nativeElement) {
-  //     this.scrollTargetRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  //   }
-  // }
 
   scrollToSearchResults() {
     console.log("searchResultsRef",this.searchResultsRef);
     window.scrollTo({top:400,behavior:'smooth'});
-    // if (this.searchResultsRef && this.searchResultsRef.nativeElement) {
-    //   this.searchResultsRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    // }
   }
 
   openOverlay(): void {
@@ -113,31 +139,6 @@ export class CourseListComponent implements OnInit {
       width: '400px', // Set width as needed
     });
   }
-
-  // goToHomepage(){
-  //   this.router.navigate(['/home']);
-  // }
-  
-  // isHovered: boolean = false;
-
-  // showDropDown(){
-
-  //   this.isHovered = !this.isHovered;
-
-  // }
-
-  // @HostListener('document:click', ['$event'])
-  // onClickOutside(event: Event) {
-  //   if (!((event.target as HTMLElement).closest('.btn') || (event.target as HTMLElement).closest('.options'))) {
-  //     this.isHovered = false;
-  //   }
-  // }
-
-  // navigateToProfile() {
-  //   this.showTopicList = false;
-  //   this.router.navigate(['/username/profilePage']);
-  //   window.scrollTo({top:0,behavior:'smooth'});
-  // }
 
 
 

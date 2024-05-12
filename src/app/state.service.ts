@@ -17,26 +17,48 @@ export class StateService {
   login:boolean = false;
   receivedInfo!: any;
   receivedPlatformList!:any;
-  topicList: boolean = true;
+  // topicList: boolean = true;
   private backNavigationFlag = false;
   username:string ='';
   topicName!:string;
+  reload:boolean = false;
 
   private courseListCompTrigger = new Subject<void>();
   private topiclistTrigger = new Subject<void>();
   courselistRefresh = this.courseListCompTrigger.asObservable();
   courselistRefreshTopicList = this.topiclistTrigger.asObservable();
 
+  setReloadFlag(flag:boolean){
+    this.reload = flag;
+    localStorage.setItem("reload",String(this.reload));
+  }
 
-  setTopicListFlag(status:boolean){
-    console.log("topicList status",status);
-    if(status == null){
-      localStorage.setItem('topicListFlag',String(this.topicList));
+  getReloadFlag():boolean{
+    const flag = localStorage.getItem("reload");
+    if(flag=='true'){
+      return true;
+    }
+    else if(flag=='false'){
+      return false;
     }
     else{
-      this.topicList = status;
-      localStorage.setItem('topicListFlag',String(this.topicList));
+      return true;
     }
+  }
+
+
+  setTopicListFlag(status:boolean){
+    // console.log("topicList status",status);
+    // if(status == null){
+    //   localStorage.setItem('topicListFlag',String(this.topicList));
+    // }
+    // else{
+    //   this.topicList = status;
+    //   localStorage.setItem('topicListFlag',String(this.topicList));
+    // }
+
+    localStorage.setItem('topicListFlag',String(status));
+
     this.topiclistTrigger.next();
 
   }
@@ -46,12 +68,15 @@ export class StateService {
     const storedValue: string | null = localStorage.getItem('topicListFlag');
 
     if(storedValue === 'true'){
-      this.topicList = true;
-      return this.topicList;
+      // this.topicList = true;
+      return true;
+    }
+    else if(storedValue === 'false'){
+      // this.topicList = false;
+      return false;
     }
     else{
-      this.topicList = false;
-      return this.topicList;
+      return true;
     }
 
   }

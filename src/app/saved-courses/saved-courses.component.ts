@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { StateService } from '../state.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -66,6 +66,11 @@ export class SavedCoursesComponent implements OnInit {
 
   toggleLeftBar() {
     this.isLeftBarOpen = !this.isLeftBarOpen;
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: Event) {
+    localStorage.setItem('lastRoute', this.router.url);
   }
 
 
