@@ -5,7 +5,8 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 70vh;
-    margin-top: 1%;
+    /* margin-top: 10%; */
+    top: 0;
 
 }
 
@@ -325,6 +326,18 @@
 
 @media (max-width: 600px) {
 
+  .background {
+    /* background-image:url(src/assets/logoCB.jpeg) ; */
+    background-size:100%;
+    background-position-y: 12%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 45vh;
+    /* margin-top: 10%; */
+    top: 0;
+
+}
+
   .courses-list{
     padding-left: 25%;
   }
@@ -335,9 +348,47 @@
     gap: 1%;
   }
 
-  /* .card{
-    margin-top: 10%;
-  } */
+}
+
+@media (max-width: 450px) {
+
+  .background {
+    /* background-image:url(src/assets/logoCB.jpeg) ; */
+    background-size:100%;
+    background-position-y: 12%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 45vh;
+    /* margin-top: 10%; */
+    top: 0;
+
+}
+
+  .courses-list{
+    padding-left: 25%;
+  }
+
+  .search-bar {
+    width: 70%;
+    margin-left: 0%;
+  }
+
+  .list-heading{
+    /* padding-left: 5%; */
+    padding-top: 2%;
+    padding-bottom: 5%;
+
+    width: 100%;  
+    font-size:25px;
+
+
+}
+
+  .card-container {
+    grid-template-columns: repeat(1, 1fr); /* Display 1 column when viewport width is less than 600px */
+    width: 100%;
+    gap: 1%;
+  }
 
 }
 
