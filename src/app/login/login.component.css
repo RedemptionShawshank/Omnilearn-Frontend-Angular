@@ -232,6 +232,7 @@ h2 {
   }
   
   .input-group input {
+    margin-bottom: 5%;
     background: none;
     border: 1px solid #353535;
     padding: 15px 23px;
@@ -275,6 +276,7 @@ h2 {
     color: #ffffff;
     font-size: 15px;
     font-weight: 400;
+    cursor: pointer;
   }
   
   .bottom-text a {
@@ -287,3 +289,7 @@ h2 {
     color: #3f95f2;
   }
   
+
+  .error-text{
+   color: red;
+  }

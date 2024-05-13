@@ -66,25 +66,42 @@
 }
 
 .card {
-  width: 375px;
-  height: 375px;
+  border-radius: 10px;
+  height: 400px;
   padding: .8em;
   background: #ffffff;
   position: relative;
   overflow: visible;
-  box-shadow: #604b4a30 0px 70px 30px -50px;
-  margin-left: 50px;
+  /* box-shadow: #604b4a30 0px 70px 30px -50px; */
+  box-shadow: 0 2px 5px rgba(121, 120, 120, 0.7);
+  display: grid;
+  justify-content: center;
+  /* padding: 10%; */
  }
- 
- .card-img {
-  height: 50%;
-  width: 50%;
-  border-radius: .5rem;
-  transition: .3s ease;
- }
+
+
+ .profile-image {
+  width: 200px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  border-radius: 50%;
+  background-color: #0979f0; /* Background color for the circle */
+  color: white; /* Text color for the initials */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; /* Adjust font size as needed */
+}
+
+.initials {
+  text-transform: uppercase;
+  font-size: 100px;
+  
+}
+
  
  .card-info {
   padding-top: 10%;
+  text-align: center;
  }
  
  
@@ -93,31 +110,26 @@
   font-weight: 900;
   font-size: 1.2em;
   line-height: 1.5;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  }
  
  .text-body {
   font-size: .9em;
   padding-bottom: 10px;
- }
- 
- 
- /*Hover*/
- .card-img:hover {
-  transform: translateY(-25%);
-  box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  }
 
 
 
 .purchased-courses {
-    width: 400px;
     height: 400px;
     background: white;
-    /* border-radius: 32px; */
+    border-radius: 10px;
     position: relative;
     box-shadow: #604b4a30 0px 70px 30px -50px;
     text-align: center;
     /* margin: 50px auto; */
+    box-shadow: 0 2px 5px rgba(121, 120, 120, 0.7);
 }
 
   .purchased-courses-button {
@@ -267,10 +279,24 @@
     margin-left: 3%;
     margin-top: 3%;
     border-radius: 10px;
+    justify-content: center;
+    gap: 5%;
+    scrollbar-width:thin;
+    scrollbar-color: transparent transparent;
 }
 
-li{
-    padding: 3%;
+.list div{
+  background-color: #e9e9e5;
+  width: 220px;
+  text-align: center;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.list div:hover{
+  background-color: #c7f582;
 }
 
 @media (max-width:8000px){
@@ -605,8 +631,12 @@ li{
   .left-bar.show {
     left: 0; /* Slide in when visible */
   }
+
+  
   
 }
+
+
 
  
 

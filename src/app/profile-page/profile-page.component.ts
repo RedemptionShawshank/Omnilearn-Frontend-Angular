@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StateService } from '../state.service';
+import { User } from '../user';
 
 interface userInfo {
   id: number;
@@ -20,7 +21,8 @@ export class ProfilePageComponent implements OnInit {
 
   isProfile: boolean = true;
   isWallet: boolean = false;
-  userdata!: userInfo;
+  userdata!: User;
+  initials!:string;
 
 
   constructor(private router:Router,private dialog : MatDialog,private service:StateService){
@@ -31,9 +33,7 @@ export class ProfilePageComponent implements OnInit {
       const parsedUser = info ? JSON.parse(info) : null;
       this.userdata = parsedUser;
     }
-
-    
-
+    this.initials = this.userdata.name.charAt(0);
 
   }
   ngOnInit(): void {
