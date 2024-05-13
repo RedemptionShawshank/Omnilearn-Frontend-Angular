@@ -861,7 +861,7 @@
   
   }
   
-  @media (max-width: 370px) {
+  @media (max-width: 440px) {
 
     .buttons-top{
       background-color: rgb(248, 184, 177);
@@ -883,7 +883,7 @@
 
     .login-button {
       margin-top: 2.5%;
-      margin-left: 20%;
+      margin-left: 30%;
     }
 
     .btn {
@@ -891,7 +891,7 @@
       width: 45px;
       border-radius: 45px;
   
-      margin-left:30%;
+      margin-left:40%;
       margin-top: 2.5%;
     }
 
