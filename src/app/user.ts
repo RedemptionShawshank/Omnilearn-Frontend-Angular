@@ -3,5 +3,8 @@ export class User {
     username!: string;
     emailId!: string;
     password!: string;
+    college!:string;
+    company!:string;
+    name!:string;
 
 }

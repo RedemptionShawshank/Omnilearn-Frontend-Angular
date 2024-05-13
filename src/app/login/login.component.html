@@ -30,14 +30,32 @@
         </div> -->
 
         <div class="login-container" *ngIf="signUp">
-            <form class="login-form" (ngSubmit)="onSubmit()">
+            <form class="login-form" (ngSubmit)="onSubmit()" #myForm="ngForm">
               <p class="heading">Sign Up</p>
               <p class="paragraph">Sign Up to create your account</p>
               <div class="input-group">
                 <input
-                  required [(ngModel)]="user.emailId" name="emailId"
-                  placeholder="emailId"
-                  type="email"
+                required [(ngModel)]="user.name" name="emailId"
+                placeholder="Name"
+                type="name"
+                />
+                <br>
+                <input
+                required [(ngModel)]="user.emailId" name="emailId"
+                placeholder="Email Id"
+                type="email"
+                />
+                <br>
+                <input
+                [(ngModel)]="user.college" name="emailId"
+                placeholder="College Name"
+                type="college"
+                />
+                <br>
+                <input
+                  [(ngModel)]="user.company" name="emailId"
+                  placeholder="Company Name"
+                  type="company"
                 />
               </div>
               <div class="input-group">
@@ -49,6 +67,7 @@
                 />
               </div>
               <button type="submit" (click)="closeDialog()">Sign Up</button>
+              <div *ngIf="invalid" class="error-text">Fill details!!!!</div>
               <div class="bottom-text">
                 <p>Already have an account? <a (click)="toggleSignIn()">Sign In</a></p>
               </div>
@@ -56,7 +75,7 @@
         </div>
 
         <div class="login-container" *ngIf="signIn">
-            <form class="login-form" (ngSubmit)="onSubmitLoginInfo()">
+            <form class="login-form" (ngSubmit)="onSubmitLoginInfo()" #myForm="ngForm">
               <p class="heading">Sign In</p>
               <p class="paragraph">Sign In to your account</p>
               <div class="input-group">
@@ -75,6 +94,7 @@
                 />
               </div>
               <button type="submit" (click)="closeDialog()">Sign In</button>
+              <div *ngIf="invalid" class="error-text">Fill details!!!!</div>
               <div class="bottom-text">
                 <p>Don't have an account? <a (click)="toggleSignUp()">Sign Up</a></p>
                 <p><a href="#">Forgot password?</a></p>

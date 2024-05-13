@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { StateService } from '../state.service';
 import { LoginInfo } from '../login-info';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
 
-interface userInfo {
-  id: number;
-  username: string;
-  emailId: string;
-  password: string;
-}
+// interface userInfo {
+//   id: number;
+//   username: string;
+//   emailId: string;
+//   password: string;
+// }
 
 @Component({
   selector: 'app-login',
@@ -32,17 +33,27 @@ export class LoginComponent {
   toggleSignUp(){
     this.signUp = !this.signUp;
     this.signIn = !this.signIn;
+    this.invalid = false;
   }
   
   toggleSignIn(){
     this.signIn = !this.signIn;
     this.signUp = !this.signUp;
+    this.invalid = false;
   }
 
   closeDialog():void{
-    console.log('Closing dialog...');
-    this.dialogRef.close();
-
+    if(!this.myForm.valid){
+      console.log("invalid input");
+      this.invalid=true;
+    }
+    else{
+      this.invalid=false;
+    }
+    console.log("invalid : ",this.invalid);
+    if(!this.invalid ){
+      this.dialogRef.close();
+    }
   }
 
   saveUserInfo(){
@@ -52,8 +63,15 @@ export class LoginComponent {
     error => console.log(error));
   }
 
+  @ViewChild('myForm') myForm!: NgForm;
+  invalid!:boolean;
+
   onSubmit(){
     // console.log("signed up user details: ",this.user);
+    // if(!this.myForm.valid){
+    //   console.log("invalid input");
+    //   this.invalid=true;
+    // }
     const email = this.user.emailId;
     var username:any = '';
     for(var i=0;i<email.length;i++){
@@ -67,6 +85,7 @@ export class LoginComponent {
     this.user.username = username;
     localStorage.setItem('userName',username);
     // console.log("user input",this.user);
+    // console.log(this.user);
     this.saveUserInfo(); //sending the submited info to backend so that it can be saved into database
 
   }
@@ -78,7 +97,7 @@ export class LoginComponent {
   loginCheck(){
 
     this.service.sendLoginInfo(this.loginInfo).subscribe((data)=>{
-      console.log("received data",data);
+      // console.log("received data",data);
       if(data !=null){
 
         this.service.loginStatus(true); // this method in service updates the value of login flag and also stores it in local storage 
