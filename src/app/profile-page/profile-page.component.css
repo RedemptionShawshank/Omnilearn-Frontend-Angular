@@ -68,6 +68,7 @@
 .card {
   border-radius: 10px;
   height: 400px;
+  width: 300px;
   padding: .8em;
   background: #ffffff;
   position: relative;
