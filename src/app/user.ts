@@ -6,5 +6,7 @@ export class User {
     college!:string;
     company!:string;
     name!:string;
+    otp!:string;
+    active!:boolean;
 
 }
