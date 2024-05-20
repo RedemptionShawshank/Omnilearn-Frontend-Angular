@@ -21,6 +21,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { SavedCoursesComponent } from './saved-courses/saved-courses.component';
+import { OTPverificationComponent } from './otpverification/otpverification.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SavedCoursesComponent } from './saved-courses/saved-courses.component';
     UserInfoComponent,
     ProfilePageComponent,
     FooterComponent,
-    SavedCoursesComponent
+    SavedCoursesComponent,
+    OTPverificationComponent
   ],
   imports: [
     BrowserModule,
