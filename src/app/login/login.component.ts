@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 import { StateService } from '../state.service';
 import { LoginInfo } from '../login-info';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
+import { RegisterDto } from '../register-dto';
+import { OTPverificationComponent } from '../otpverification/otpverification.component';
 
 // interface userInfo {
 //   id: number;
@@ -23,12 +25,12 @@ export class LoginComponent {
   signUp:boolean = false;
   signIn:boolean = true;
 
-  user: User = new User();
+  user: RegisterDto = new RegisterDto();
   loginInfo: LoginInfo = new LoginInfo();
 
   receivedInfo!: any;
 
-  constructor (private service:StateService,private router:Router,private dialogRef: MatDialogRef<LoginComponent>){}
+  constructor (private service:StateService,private router:Router,private dialogRef: MatDialogRef<LoginComponent>,private dialog : MatDialog){}
 
   toggleSignUp(){
     this.signUp = !this.signUp;
@@ -50,10 +52,13 @@ export class LoginComponent {
     else{
       this.invalid=false;
     }
-    console.log("invalid : ",this.invalid);
     if(!this.invalid ){
       this.dialogRef.close();
     }
+
+    this.dialog.open(OTPverificationComponent, {
+      width: '400px', // Set width as needed
+    });
   }
 
   saveUserInfo(){
@@ -67,11 +72,7 @@ export class LoginComponent {
   invalid!:boolean;
 
   onSubmit(){
-    // console.log("signed up user details: ",this.user);
-    // if(!this.myForm.valid){
-    //   console.log("invalid input");
-    //   this.invalid=true;
-    // }
+    console.log("user entered: ",this.user);
     const email = this.user.emailId;
     var username:any = '';
     for(var i=0;i<email.length;i++){

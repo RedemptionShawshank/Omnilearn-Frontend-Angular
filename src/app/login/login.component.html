@@ -11,23 +11,6 @@
 <body>
 
     <div class="wrapper">
-        <!-- <div class="form-wrapper sign-up" *ngIf="signUp">
-            <form (ngSubmit)="onSubmit()">
-                <h2>Sign Up</h2>
-                <div class="input-group">
-                    <input type="email" required [(ngModel)]="user.emailId" name="emailId">
-                    <label for="">Email</label>
-                </div>
-                <div class="input-group">
-                    <input type="password" required [(ngModel)]="user.password" name="password"> 
-                    <label for="">Password</label>
-                </div>
-                <button type="submit" class="btn">Sign Up</button>
-                <div class="sign-link">
-                    <p>Already have an account? <a class="signIn-link" (click)="toggleSignIn()">Sign In</a></p>
-                </div>
-            </form>
-        </div> -->
 
         <div class="login-container" *ngIf="signUp">
             <form class="login-form" (ngSubmit)="onSubmit()" #myForm="ngForm">
@@ -35,7 +18,7 @@
               <p class="paragraph">Sign Up to create your account</p>
               <div class="input-group">
                 <input
-                required [(ngModel)]="user.name" name="emailId"
+                required [(ngModel)]="user.name" name="name"
                 placeholder="Name"
                 type="name"
                 />
@@ -47,13 +30,13 @@
                 />
                 <br>
                 <input
-                [(ngModel)]="user.college" name="emailId"
+                [(ngModel)]="user.college" name="college"
                 placeholder="College Name"
                 type="college"
                 />
                 <br>
                 <input
-                  [(ngModel)]="user.company" name="emailId"
+                  [(ngModel)]="user.company" name="company"
                   placeholder="Company Name"
                   type="company"
                 />
