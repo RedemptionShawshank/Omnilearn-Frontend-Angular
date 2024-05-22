@@ -56,9 +56,7 @@ export class LoginComponent {
       this.dialogRef.close();
     }
 
-    this.dialog.open(OTPverificationComponent, {
-      width: '400px', // Set width as needed
-    });
+
   }
 
   saveUserInfo(){
@@ -70,6 +68,14 @@ export class LoginComponent {
 
   @ViewChild('myForm') myForm!: NgForm;
   invalid!:boolean;
+
+
+  openOTP(){
+    this.dialog.open(OTPverificationComponent, {
+      width: '300px',
+      height: '400px' // Set width as needed
+    });
+  }
 
   onSubmit(){
     console.log("user entered: ",this.user);
@@ -85,9 +91,12 @@ export class LoginComponent {
     }
     this.user.username = username;
     localStorage.setItem('userName',username);
+    localStorage.setItem('emailId',this.user.emailId)
     // console.log("user input",this.user);
     // console.log(this.user);
     this.saveUserInfo(); //sending the submited info to backend so that it can be saved into database
+
+    this.openOTP();
 
   }
 

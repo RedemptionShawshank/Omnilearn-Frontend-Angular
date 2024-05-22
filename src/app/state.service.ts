@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from './user';
@@ -112,11 +112,11 @@ export class StateService {
     this.courseListCompTrigger.next();
   }
 
-  private baseURL = "http://localhost:8080";
-  private baseURLuserList = "http://localhost:8080/api/v1/users";
-  private baseURLtopicList  = "http://localhost:8080/api/v1/topic_list";
-  private baseURLaddUserInfo = "http://localhost:8080/api/v1/register";
-  private baseURLloginInfo = "http://localhost:8080/api/v1/loginInfo";
+  private baseURL = "https://incredible-trust-production.up.railway.app";
+  private baseURLuserList = "https://incredible-trust-production.up.railway.app/api/v1/users";
+  private baseURLtopicList  = "https://incredible-trust-production.up.railway.app/api/v1/topic_list";
+  private baseURLaddUserInfo = "https://incredible-trust-production.up.railway.app/api/v1/register";
+  private baseURLloginInfo = "https://incredible-trust-production.up.railway.app/api/v1/loginInfo";
 
   getUserList():Observable<User[]>{
 
@@ -132,11 +132,11 @@ export class StateService {
 
     this.topicName = data;
 
-    this.httpClient.post<string>('http://localhost:8080/api/v1/path-variable',data).subscribe(value =>{
+    this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/path-variable',data).subscribe(value =>{
       this.receivedPlatformList = value;
     });
 
-    return this.httpClient.post<string>('http://localhost:8080/api/v1/path-variable',data);
+    return this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/path-variable',data);
   }
 
   getFavouriteList(userName:string,topicName:string):Observable<FavouriteList[]>{
@@ -144,15 +144,15 @@ export class StateService {
       userName:userName,
       topicName:topicName
     };
-    return this.httpClient.post<FavouriteList[]>('http://localhost:8080/api/v1/favList',body);
+    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/favList',body);
   }
 
   getFavouriteListByUsername(userName:string):Observable<FavouriteList[]>{
-    return this.httpClient.post<FavouriteList[]>('http://localhost:8080/api/v1/userFavlist',userName);
+    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/userFavlist',userName);
   }
 
   addFavourite(favorite: FavouriteList):Observable<FavouriteList[]>{
-    return this.httpClient.post<FavouriteList[]>('http://localhost:8080/api/v1/addFavourite',favorite);
+    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/addFavourite',favorite);
   }
 
   addUserinfo(user: RegisterDto): Observable<Object>{ // if we don't know what is the response type of our api, we can add "Object or any" type in Observable
@@ -181,6 +181,22 @@ export class StateService {
 
   deletefavorite(courseId: number) {
     return this.httpClient.delete(`${this.baseURL}/api/v1/remove/${courseId}`);
+  }
+
+  verifyAccount(email:string,otp:string):Observable<Object>{
+    const body = {
+      email:email,
+      otp:otp
+    };
+
+    return this.httpClient.put('https://incredible-trust-production.up.railway.app/api/v1/verify-account',body,{responseType: 'text' });
+  }
+
+  resendOTP(emailId:string): Observable<Object>{
+    console.log("entered resend otp")
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // const params = new HttpParams().set('paramName', emailId); {params,headers, responseType:'text'}
+    return this.httpClient.put('https://incredible-trust-production.up.railway.app/api/v1/regenerate-otp',emailId);
   }
 
 
