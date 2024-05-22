@@ -1,6 +1,6 @@
 .otp-Form {
     width: 230px;
-    height: 300px;
+    height: auto;
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -104,4 +104,8 @@
     cursor: pointer;
     font-size: 1.1em;
     font-weight: 700;
+  }
+
+  .wrong-input{
+    color: red;
   }
