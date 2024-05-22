@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { PlatformCourseList } from './platform-course-list';
 import { FavouriteList } from './favourite-list';
 import { RegisterDto } from './register-dto';
+import { FormArray } from '@angular/forms';
 
 
 @Injectable({
@@ -82,7 +83,9 @@ export class StateService {
 
   }
 
-  constructor(private httpClient:HttpClient,private router:Router) {
+  constructor(private httpClient:HttpClient,private router:Router,
+    
+  ) {
 
     window.addEventListener('popstate', () => {
       // Check if the user navigated back
@@ -111,7 +114,8 @@ export class StateService {
   notifyComponentBRefresh() {
     this.courseListCompTrigger.next();
   }
-
+  //http://localhost:8080
+  //https://incredible-trust-production.up.railway.app
   private baseURL = "https://incredible-trust-production.up.railway.app";
   private baseURLuserList = "https://incredible-trust-production.up.railway.app/api/v1/users";
   private baseURLtopicList  = "https://incredible-trust-production.up.railway.app/api/v1/topic_list";
@@ -155,8 +159,23 @@ export class StateService {
     return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/addFavourite',favorite);
   }
 
-  addUserinfo(user: RegisterDto): Observable<Object>{ // if we don't know what is the response type of our api, we can add "Object or any" type in Observable
-    return this.httpClient.post(`${this.baseURLaddUserInfo}`,user);
+  addUserinfo(user: RegisterDto){ // if we don't know what is the response type of our api, we can add "Object or any" type in Observable
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    this.httpClient.post(`${this.baseURLaddUserInfo}`,user,{ headers, observe: 'response' }).subscribe(response =>{
+      if(response.status === 200){
+        localStorage.setItem('AccountCreated','true');
+
+      }
+      else{
+        localStorage.setItem('AccountCreated','false');
+
+      }
+    });
+
+    // return this.httpClient.post(`${this.baseURLaddUserInfo}`,user,{ headers, observe: 'response' });
   }
 
   sendLoginInfo(loginInfo: LoginInfo): Observable<Object>{
@@ -197,6 +216,13 @@ export class StateService {
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // const params = new HttpParams().set('paramName', emailId); {params,headers, responseType:'text'}
     return this.httpClient.put('https://incredible-trust-production.up.railway.app/api/v1/regenerate-otp',emailId);
+  }
+
+  sendCourseList(rows:Array<Object>):Observable<string>{
+
+    console.log("entered in sendCourseList",rows);
+    return this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/addCourses',rows);
+
   }
 
 

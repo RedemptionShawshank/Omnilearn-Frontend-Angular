@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { StateService } from '../state.service';
+import { AdminPageComponent } from '../admin-page/admin-page.component';
 
 @Component({
   selector: 'app-home-component',
@@ -12,20 +13,31 @@ import { StateService } from '../state.service';
 export class HomeComponentComponent implements OnInit {
 
   login:boolean = false;
+  userName!:string;
+  adminAcess:boolean = false;
 
   constructor(private dialog : MatDialog,private router:Router,private service:StateService) {
 
+    const user = localStorage.getItem('userName');
+    if(user!=null){
+      this.userName = user;
+    }
+
+    if(this.userName === 'shashankvaish1109' || this.userName === 'skabd17'){
+      this.adminAcess = true;
+    }
+
         // here we add things we want at the time of reload, as after reload constructor in intantiated first
 
-        const storedValue: string | null = localStorage.getItem('loginStatus');
-    
+    const storedValue: string | null = localStorage.getItem('loginStatus');
 
-        if(storedValue === 'true'){
-          this.login = true;
-        }
-        else{
-          this.login = false;
-        }
+
+    if(storedValue === 'true'){
+      this.login = true;
+    }
+    else{
+      this.login = false;
+    }
   }
 
   ngOnInit(): void {
@@ -57,6 +69,17 @@ export class HomeComponentComponent implements OnInit {
     this.dialog.open(LoginComponent, {
       width: '400px', // Set width as needed
     });
+  }
+
+
+
+  openAdminPage():void{
+
+    this.dialog.open(AdminPageComponent, {
+      width: '2500px', // Set width as needed
+    });
+    
+
   }
 
   goToHomepage(){
@@ -91,6 +114,7 @@ export class HomeComponentComponent implements OnInit {
     this.login = false;
     this.isHovered = false;
     localStorage.setItem('loginStatus', String(this.login));
+    localStorage.setItem('topicListFlag','true');
     this.router.navigate(['/home']);
     window.scrollTo({top:0,behavior:'smooth'});
   }

@@ -1,0 +1,19 @@
+<body>
+    <div class="card">
+        <div class="checkmark-circle">
+            <div class="background"></div>
+            <div class="checkmark draw"></div>
+        </div>
+        <div *ngIf="loggedIn">
+            <h1>Sign In Successful</h1>
+            <p>Welcome to OmniLearn!</p>
+            <p>Keep Learning!</p>
+        </div>
+        <div *ngIf="accountCreated">
+            <h1>Account Created Successfully</h1>
+            <p>Welcome to OmniLearn!</p>
+            <p>Keep Learning!</p>
+        </div>
+
+    </div>
+</body>
