@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StateService } from '../state.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AuthenticationCardComponent } from '../authentication-card/authentication-card.component';
 
 @Component({
   selector: 'app-otpverification',
@@ -9,10 +10,32 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class OTPverificationComponent {
 
-  constructor(private service:StateService,private dialogRef: MatDialogRef<OTPverificationComponent>){}
-
   invalid:boolean = false;
 
+
+  constructor(private service:StateService,private dialogRef: MatDialogRef<OTPverificationComponent>,
+    private dialog : MatDialog,
+    private dialogRefVerifyCard:MatDialogRef<AuthenticationCardComponent>
+  ){
+
+  }
+
+
+  openVerifiedCard(){
+    this.dialogRefVerifyCard = this.dialog.open(AuthenticationCardComponent, {
+      width: '300px' // Set width as needed
+    });
+
+    setTimeout(()=>{
+      console.log("inside timeout");
+      this.dialogRefVerifyCard.close();
+    },3000);
+
+    // timer(3000).subscribe(() => {
+    //   console.log("inside timer");
+    //   this.dialogRefVerifyCard.close();
+    // });
+  }
   verifyAccount(){
 
     const otp1 = (document.getElementById('otp-input1') as HTMLInputElement).value;
@@ -34,6 +57,7 @@ export class OTPverificationComponent {
         if(data === "Verified"){
           this.invalid = false;
           this.dialogRef.close();
+          this.openVerifiedCard();
         }
         else{
           this.invalid = true;
@@ -59,6 +83,12 @@ export class OTPverificationComponent {
       },
     error => console.log(error));
     }
+
+  }
+
+  closeDialog():void{
+
+    this.dialogRef.close();
 
   }
 

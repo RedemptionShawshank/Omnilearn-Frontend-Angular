@@ -22,6 +22,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { SavedCoursesComponent } from './saved-courses/saved-courses.component';
 import { OTPverificationComponent } from './otpverification/otpverification.component';
+import { AuthenticationCardComponent } from './authentication-card/authentication-card.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { OTPverificationComponent } from './otpverification/otpverification.comp
     ProfilePageComponent,
     FooterComponent,
     SavedCoursesComponent,
-    OTPverificationComponent
+    OTPverificationComponent,
+    AuthenticationCardComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { OTPverificationComponent } from './otpverification/otpverification.comp
     FormsModule,
     NgxSliderModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     
   ],
   providers: [

@@ -7,6 +7,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { RegisterDto } from '../register-dto';
 import { OTPverificationComponent } from '../otpverification/otpverification.component';
+import { AuthenticationCardComponent } from '../authentication-card/authentication-card.component';
+import { timer } from 'rxjs/internal/observable/timer';
 
 // interface userInfo {
 //   id: number;
@@ -30,44 +32,68 @@ export class LoginComponent {
 
   receivedInfo!: any;
 
-  constructor (private service:StateService,private router:Router,private dialogRef: MatDialogRef<LoginComponent>,private dialog : MatDialog){}
+  constructor (private service:StateService,
+    private router:Router,
+    private dialogRef: MatDialogRef<LoginComponent>,
+    private dialog : MatDialog,
+    private dialogRefVerifyCard:MatDialogRef<AuthenticationCardComponent>){}
 
+  @ViewChild('myFormSignUp') myFormSignUp!: NgForm;
+  @ViewChild('myFormSignIn') myFormSignIn!: NgForm;
+  invalid!:boolean;
+  wrongPassword!: boolean;
   toggleSignUp(){
     this.signUp = !this.signUp;
     this.signIn = !this.signIn;
     this.invalid = false;
+    this.wrongPassword = false;
   }
   
   toggleSignIn(){
     this.signIn = !this.signIn;
     this.signUp = !this.signUp;
     this.invalid = false;
+    this.wrongPassword = false;
   }
 
-  closeDialog():void{
-    if(!this.myForm.valid){
-      console.log("invalid input");
+  closeDialogSignUp():void{
+    if(!this.myFormSignUp.valid){
       this.invalid=true;
     }
-    else{
-      this.invalid=false;
-    }
-    if(!this.invalid ){
+    console.log("invalid",this.invalid);
+
+    if(!this.invalid){
       this.dialogRef.close();
     }
+  }
 
+  closeDialogSignIn():void{
 
+    if(!this.myFormSignIn.valid){
+      this.invalid = true;
+      this.wrongPassword = false;
+    }
+    console.log("invalid",this.invalid);
+    console.log("wrong password",this.wrongPassword);
+    if(!this.invalid){
+      this.dialogRef.close();
+    }
+    // else{
+    //   this.wrongPassword = false;
+    //   this.dialogRef.close();
+    // }
   }
 
   saveUserInfo(){
-    this.service.addUserinfo(this.user).subscribe( data => {
-      console.log(data);
-    },
-    error => console.log(error));
+    
+    this.service.addUserinfo(this.user);
+    // .subscribe( response => {
+    //   console.log("response",response);
+    // },
+    // error => console.log(error));
   }
 
-  @ViewChild('myForm') myForm!: NgForm;
-  invalid!:boolean;
+
 
 
   openOTP(){
@@ -77,7 +103,14 @@ export class LoginComponent {
     });
   }
 
-  onSubmit(){
+  onSubmitSignUpInfo(){
+
+    if(!this.myFormSignUp.valid){
+      console.log("invalid form sign up");
+      this.invalid = true;
+      return;
+    }
+
     console.log("user entered: ",this.user);
     const email = this.user.emailId;
     var username:any = '';
@@ -104,7 +137,31 @@ export class LoginComponent {
     window.location.reload();
   }
 
+  openVerifiedCard(){
+    this.dialogRefVerifyCard = this.dialog.open(AuthenticationCardComponent, {
+      width: '300px' // Set width as needed
+    });
+
+    setTimeout(()=>{
+      console.log("inside timeout");
+      this.dialogRefVerifyCard.close();
+    },3000);
+
+    // timer(3000).subscribe(() => {
+    //   console.log("inside timer");
+    //   this.dialogRefVerifyCard.close();
+    // });
+  }
+
+
   loginCheck(){
+
+    if(!this.myFormSignIn.valid){
+      this.invalid = true;
+      console.log("invalid form sign in");
+      return;
+    }
+
 
     this.service.sendLoginInfo(this.loginInfo).subscribe((data)=>{
       // console.log("received data",data);
@@ -120,13 +177,21 @@ export class LoginComponent {
 
         localStorage.setItem('userName',this.receivedInfo.username);
 
+        this.wrongPassword = false;
+        this.openVerifiedCard();
+
       }
       else{
         this.service.loginStatus(false);
+        this.wrongPassword = true;
+        this.invalid = false;
+        console.log("wrong password",this.wrongPassword);
       }
     },
     error=> console.log(error));
   }
+
+
 
   onSubmitLoginInfo(){
     this.loginCheck();

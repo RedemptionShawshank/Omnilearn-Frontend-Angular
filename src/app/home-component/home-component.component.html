@@ -32,6 +32,7 @@
     <div class="options" *ngIf="isHovered" (mouseleave)="showDropDown()">
         <a (click)="navigateToProfile()">Profile</a>
         <a (click)="logOut()">Logout</a>
+        <a *ngIf="adminAcess" (click)="openAdminPage()">Admin</a>
     </div>
 
     <!-- <button mat-fab class="btn" matTooltip="Click to expand" (click)="showDropDown()" *ngIf="login"></button>

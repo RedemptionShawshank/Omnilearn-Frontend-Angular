@@ -1,0 +1,61 @@
+<!-- <br>
+<br>
+
+<h1>Admin Page</h1>
+
+<div class="wrapper">
+
+    <input class="number" type="number" [(ngModel)]="numOflinks" (input)="inputArray(numOflinks)">
+
+    <input class="number" type="text" [(ngModel)]="numOflinks" (input)="inputArray(numOflinks)">
+
+    <div class="links" *ngFor="let input of linkArray ; let i = index">
+        <label for="input-{{i}}">Input {{i + 1}}:</label>
+        <input type="text" [(ngModel)] = "input.value">
+
+    </div>
+
+</div> -->
+
+
+<br>
+<br>
+
+<h1>Admin Page</h1>
+<div>
+    <label for="numRows">Enter number of rows:</label>
+    <input type="number" id="numRows" [(ngModel)]="numRows" (change)="setRows()">
+</div>
+  
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="col1Select">Select Col 1 Value:</label>
+    <select id="col1Select" (change)="onCol1Change($event)">
+      <option *ngFor="let option of topicNameOptions" [value]="option">{{ option }}</option>
+    </select>
+    <table>
+        <thead>
+        <tr>
+            <th>topicName</th>
+            <th>platformName</th>
+            <th>affiliateLink</th>
+            <th>desc</th>
+            <th>price</th>
+            <th>rating</th>
+            <th>imagePath</th>
+        </tr>
+        </thead>
+        <tbody formArrayName="rows">
+        <tr *ngFor="let row of rows.controls; let i = index" [formGroupName]="i">
+            <td><input formControlName="topicName" /></td>
+            <td><input formControlName="platformName" /></td>
+            <td><input formControlName="affiliateLink" /></td>
+            <td><input formControlName="desc" /></td>
+            <td><input formControlName="price" /></td>
+            <td><input formControlName="rating" /></td>
+            <td><input formControlName="imagePath" /></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit">Submit</button>
+</form>
+  

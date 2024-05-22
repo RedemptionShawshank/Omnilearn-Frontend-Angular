@@ -13,7 +13,7 @@
     <div class="wrapper">
 
         <div class="login-container" *ngIf="signUp">
-            <form class="login-form" (ngSubmit)="onSubmit()" #myForm="ngForm">
+            <form class="login-form" (ngSubmit)="onSubmitSignUpInfo()" #myFormSignUp="ngForm">
               <p class="heading">Sign Up</p>
               <p class="paragraph">Sign Up to create your account</p>
               <div class="input-group">
@@ -49,7 +49,7 @@
                   type="password"
                 />
               </div>
-              <button type="submit" (click)="closeDialog()">Sign Up</button>
+              <button type="submit" (click)="closeDialogSignUp()">Sign Up</button>
               <div *ngIf="invalid" class="error-text">Fill details!!!!</div>
               <div class="bottom-text">
                 <p>Already have an account? <a (click)="toggleSignIn()">Sign In</a></p>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="login-container" *ngIf="signIn">
-            <form class="login-form" (ngSubmit)="onSubmitLoginInfo()" #myForm="ngForm">
+            <form class="login-form" (ngSubmit)="onSubmitLoginInfo()" #myFormSignIn="ngForm">
               <p class="heading">Sign In</p>
               <p class="paragraph">Sign In to your account</p>
               <div class="input-group">
@@ -76,8 +76,9 @@
                   type="password"
                 />
               </div>
-              <button type="submit" (click)="closeDialog()">Sign In</button>
+              <button type="submit" (click)="closeDialogSignIn()">Sign In</button>
               <div *ngIf="invalid" class="error-text">Fill details!!!!</div>
+              <div *ngIf="wrongPassword" class="error-text">Wrong Password</div>
               <div class="bottom-text">
                 <p>Don't have an account? <a (click)="toggleSignUp()">Sign Up</a></p>
                 <p><a href="#">Forgot password?</a></p>
