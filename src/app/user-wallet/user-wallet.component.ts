@@ -44,18 +44,9 @@ export class UserWalletComponent implements OnInit {
   users!: User[];
 
   ngOnInit(): void {
-
-    this.getUsers();
     
   }
 
-  private getUsers(){
-    this.userService.getUserList().subscribe(data =>{
-      this.users = data;
-      console.log("data: ",this.users);
-    });
-
-  }
 
   isLeftBarOpen: boolean = false;
 

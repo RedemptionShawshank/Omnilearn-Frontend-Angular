@@ -68,7 +68,7 @@
                             </div>
                           
                             <div class="button-container">
-                                <button class="buy-button button">Check it</button>
+                                <button (click)="openInNewTab(topic.affiliateLink)" class="buy-button button">Check it</button>
                           
                                 <label class="favorite" *ngIf="isLoggedIn">
                                   <input type="checkbox" [checked]="favouriteCourseId.includes(topic.id)" (change)="handleFavoriteCourse($event,topic)">

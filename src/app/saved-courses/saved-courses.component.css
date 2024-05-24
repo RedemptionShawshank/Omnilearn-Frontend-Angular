@@ -3,13 +3,13 @@
 
 
 .profile-page{
-    height: 900px;
-    width: 100%;
-    padding-left: 1%;
-    padding-right: 1%;
-    padding-top: 5% ;
-    display: flex;
-    gap: 1%;
+  height: 900px;
+  width: 100%;
+  padding-left: 1%;
+  padding-right: 1%;
+  display: flex;
+  gap: 1%;
+  top:10px;
 }
 
 /* .toggle-button {
@@ -21,7 +21,6 @@
 
   .hamburger-menu{
     display:none;
-    left: 0px;
   }
 
 .line {
@@ -419,9 +418,21 @@
       width: 100%;
       padding-left: 1%;
       padding-right: 1%;
-      padding-top: 11% ;
+      /* padding-top: 11% ; */
       display: flex;
       gap: 1%;
+    }
+  
+    .hamburger-menu {
+      position: fixed;
+      top: 0.5%;
+      left: 20px;
+      z-index: 1000;
+      background: none;
+      border: none;
+      cursor: pointer;
+      background-color: #333;
+      display: block;
     }
 
     .card-container {
@@ -431,17 +442,6 @@
       width: 100%;
   }
   
-    .hamburger-menu {
-      position: fixed;
-      top: 80px;
-      left: 20px;
-      z-index: 1000;
-      background: none;
-      border: none;
-      cursor: pointer;
-      background-color: #333;
-      display: block;
-    }
     
     .line {
       display: block;
@@ -474,16 +474,6 @@
   
   @media (max-width:800px){
 
-    .profile-page{
-      height: 900px;
-      width: 100%;
-      padding-left: 1%;
-      padding-right: 1%;
-      padding-top: 11% ;
-      display: flex;
-      gap: 1%;
-    }
-
 
     .card-container {
       display: grid;
@@ -494,8 +484,9 @@
   
     .hamburger-menu {
       position: fixed;
-      top: 80px;
+      top: 0.5%;
       left: 20px;
+      height: 25px;
       z-index: 1000;
       background: none;
       border: none;
@@ -534,16 +525,6 @@
   
   @media (max-width:750px){
 
-    .profile-page{
-      height: 900px;
-      width: 100%;
-      padding-left: 1%;
-      padding-right: 1%;
-      padding-top: 11% ;
-      display: flex;
-      gap: 1%;
-    }
-
 
     .card-container {
       display: grid;
@@ -553,8 +534,9 @@
     }
   
     .hamburger-menu {
+      height: 25px;
       position: fixed;
-      top: 80px;
+      top: 0.5%;
       left: 20px;
       z-index: 1000;
       background: none;
@@ -595,14 +577,14 @@
   @media (max-width:700px){
 
     .profile-page{
+      height: 25px;
       height: 900px;
       width: 100%;
       padding-left: 1%;
       padding-right: 1%;
-      padding-top: 12% ;
+      /* padding-top: 20% ; */
       display: flex;
       gap: 1%;
-    
     }
 
     .card-container {
@@ -614,8 +596,9 @@
     }
   
     .hamburger-menu {
+      height: 25px;
       position: fixed;
-      top: 80px;
+      top: 0.5%;
       left: 20px;
       z-index: 1000;
       background: none;
@@ -656,14 +639,14 @@
   @media (max-width:600px){
   
     .profile-page{
+      height: 25px;
       height: 900px;
       width: 100%;
       padding-left: 1%;
       padding-right: 1%;
-      padding-top: 20% ;
+      /* padding-top: 20% ; */
       display: flex;
       gap: 1%;
-    
     }
 
     .card-container {
@@ -675,9 +658,10 @@
     }
   
     .hamburger-menu {
+      height: 25px;
       position: fixed;
-      top: 80px;
-      /* left: 20px; */
+      top: 0.5%;
+      left: 20px;
       z-index: 1000;
       background: none;
       border: none;
@@ -711,6 +695,66 @@
     .left-bar.show {
       left: 0; /* Slide in when visible */
     }
+    
+  }
+  
+  @media (max-width:440px){
+
+    .profile-page{
+      height: 900px;
+      width: 100%;
+      padding-left: 1%;
+      padding-right: 1%;
+      padding-top: 1% ;
+      display: flex;
+      gap: 1%;
+    }
+  
+    .user-details{
+      display: grid;
+    }
+  
+  
+    .hamburger-menu {
+      height: 25px;
+      position: fixed;
+      top: 0.3%;
+      left: 20px;
+      z-index: 1000;
+      background: none;
+      border: none;
+      cursor: pointer;
+      background-color: #333;
+      display: block;
+    }
+    
+    .line {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background-color: #f8f2f2;
+      margin: 5px auto;
+    }
+  
+    .left-bar {
+      position: fixed;
+      left: -25%; /* Initially hidden */
+      width: 20%;
+      height: 50%;
+      display: grid;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(242, 242, 243);
+      transition: left 0.3s ease;
+      z-index: 800;
+    }
+    
+    .left-bar.show {
+      left: 0; /* Slide in when visible */
+    }
+  
+    
     
   }
   

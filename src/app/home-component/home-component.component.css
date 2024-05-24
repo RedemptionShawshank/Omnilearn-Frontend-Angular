@@ -2,20 +2,28 @@
   
 
 .buttons-top{
-  background-color: rgb(248, 184, 177);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  border-radius: 7px;
-  display: flex;
+  background-color: rgb(255, 255, 255);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 7px; */
   z-index: 1000;
-  position:fixed;
   width: 100%;
   top:0;
+  height: 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
   
 .website-name {
 
   cursor: pointer;
-  /* background-color: aqua; */
+  flex: 1;
+  position: absolute ;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5%;
 
 }
 
@@ -37,14 +45,17 @@
     /* padding: 2px; */
     padding-left: 5px;
     /* background-color: aquamarine; */
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    letter-spacing: 2.5px;
+    color: rgb(2, 37, 103);
+
+    margin: 0;
   }
 
   .login-button {
-    margin-top: 1.5%;
-    margin-left: 75%;
+    /* flex: 1; */
+    margin-left: auto ;
+    margin-top: 0.5%;
   }
 
   button {
@@ -52,13 +63,14 @@
     color: white;
     border-radius: 2rem;
     cursor: pointer;
-    width: 95.02px;
-    height: 42.66px;
+    width: 70px;
+    height: 25px;
     border: none;
     background-color: #3653f8;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: fadeIn 0.6s ease-in-out
   }
   
   button .span-mother {
@@ -137,12 +149,12 @@
   }
 
   .btn {
-    height: 45px;
-    width: 45px;
-    border-radius: 45px;
-    margin-left:80%;
-    margin-top: 1.5%;
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+    margin-left:auto;
     background-color: #3653f8;
+    margin-top: 0.5%;
    }
 
    .btn:hover{
@@ -185,148 +197,19 @@
 
   @media (max-width: 8000px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1%;
-      margin-left: 80%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:85%;
-      margin-top: 1%;
-     }
-
 
   }
   
   @media (max-width: 4000px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1%;
-      margin-left: 80%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:85%;
-      margin-top: 1%;
-     }
-
-
   }
   
   @media (max-width: 3000px) {
-
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1%;
-      margin-left: 80%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:85%;
-      margin-top: 1%;
-     }
-
 
   }
   
   @media (max-width: 2000px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1%;
-      margin-left: 80%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:85%;
-      margin-top: 1%;
-     }
 
      .options{
       height: 10%;
@@ -339,37 +222,7 @@
   }
   
   @media (max-width: 1600px) {
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
 
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1.2%;
-      margin-left: 76.5%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:80%;
-      margin-top: 1.2%;
-     }
 
      .options{
       height: 10%;
@@ -381,38 +234,6 @@
   }
   
   @media (max-width: 1550px) {
-
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1.2%;
-      margin-left: 76.5%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:80%;
-      margin-top: 1.2%;
-     }
     
      .options{
       height: 10%;
@@ -425,38 +246,6 @@
   
   @media (max-width: 1500px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1.4%;
-      margin-left: 76.5%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:80%;
-      margin-top: 1.4%;
-     }
-
      .options{
       height: 10%;
       width: 7%;
@@ -468,37 +257,6 @@
   }
   
   @media (max-width: 1250px) {
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1.4%;
-      margin-left: 73%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:77%;
-      margin-top: 1.4%;
-     }
 
      .options{
       height: 10%;
@@ -510,38 +268,6 @@
   }
   
   @media (max-width: 1100px) {
-    
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1.5%;
-      margin-left: 70%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:75%;
-      margin-top: 1.5%;
-     }
 
      .options{
       height: 10%;
@@ -554,38 +280,6 @@
   
   
   @media (max-width: 1000px) {
-
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 1.5%;
-      margin-left: 65%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:70%;
-      margin-top: 1.5%;
-     }
     
      .options{
       height: 10%;
@@ -598,38 +292,6 @@
   
   @media (max-width: 900px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 2%;
-      margin-left: 60%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:70%;
-      margin-top: 2%;
-     }
-
      .options{
       height: 10%;
       width: 10%;
@@ -639,38 +301,7 @@
   }
   
   @media (max-width: 800px) {
-  
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
 
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 2.5%;
-      margin-left: 55%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:60%;
-      margin-top: 2.5%;
-     }
 
      .options{
       height: 10%;
@@ -683,38 +314,6 @@
   }
   
   @media (max-width: 750px) {
-
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 2.5%;
-      margin-left: 55%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:60%;
-      margin-top: 2.5%;
-     }
 
      .options{
       height: 10%;
@@ -729,37 +328,6 @@
   
   @media (max-width: 700px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 2.5%;
-      margin-left: 50%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:60%;
-      margin-top: 2.5%;
-     }
 
      .options{
       height: 10%;
@@ -775,37 +343,6 @@
   
   @media (max-width: 600px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 2.5%;
-      margin-left: 40%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:50%;
-      margin-top: 2.5%;
-    }
 
     .options{
       height: 10%;
@@ -817,83 +354,9 @@
   
   }
   
-  @media (max-width: 440px) {
-
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 2.5%;
-      margin-left: 30%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:40%;
-      margin-top: 2.5%;
-    }
-
-    .options{
-      height: 10%;
-      width: 15%;
-      margin-left: 80%;
-      margin-top: 12%;
-    }
-
-  
-  }
   
   @media (max-width: 440px) {
 
-    .buttons-top{
-      background-color: rgb(248, 184, 177);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      border-radius: 7px;
-      display: flex;
-      z-index: 1000;
-      position:fixed;
-      width: 100%;
-      top:0;
-    }
-
-    .animated-text {
-      animation: fadeIn 0.6s ease-in-out; /* Adjust duration and easing as needed */
-      padding-left: 15px;
-      font-size: 30px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .login-button {
-      margin-top: 2.5%;
-      margin-left: 30%;
-    }
-
-    .btn {
-      height: 45px;
-      width: 45px;
-      border-radius: 45px;
-  
-      margin-left:40%;
-      margin-top: 2.5%;
-    }
 
     .options{
       height: 10%;
