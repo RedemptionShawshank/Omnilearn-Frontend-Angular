@@ -670,13 +670,16 @@ body {
 
 
 .main-body{
-  margin-top:16%;
+  margin-top: 5%;
   /* background-color:#22c55e ; */
 }
 
 .search-bar {
-  width: 40%;
-  margin-left: 27%;
+  width: 50%;
+  /* margin-left: 27%; */
+  align-items: center;
+  justify-content: center;
+  transform: translateX(50%);
 }
 
 .search-input {

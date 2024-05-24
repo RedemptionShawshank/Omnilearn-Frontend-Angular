@@ -27,7 +27,12 @@
         </button>
     </div>
  
-    <div class="btn" (mouseover) ="showDropDown()" *ngIf="login"></div>
+    <div class="btn" (mouseover) ="showDropDown()" *ngIf="login">
+      <div class="initials">{{initials}}</div></div>
+
+    <!-- <div class="profile-image">
+      <div class="initials">{{initials}}</div>
+    </div> -->
 
     <div class="options" *ngIf="isHovered" (mouseleave)="showDropDown()">
         <a (click)="navigateToProfile()">Profile</a>
