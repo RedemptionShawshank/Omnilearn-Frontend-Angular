@@ -25,12 +25,12 @@
                     <div class="description">
                         <div class="brand">{{topic.platformName}}</div>
                         <div class="product-desc">
-                            {{topic.desc}}
+                            {{topic.description}}
                         </div>
-                        <div class="rating">{{topic.rating}}(29,062)</div>
+                        <div class="rating">{{topic.rating}}</div>
                     </div>
                     <div class="button-container">
-                        <button class="buy-button button">Check it</button>
+                        <button class="buy-button button" (click)="openInNewTab(topic.affiliateLink)">Check it</button>
                     </div>
                 </div>
             </div>
