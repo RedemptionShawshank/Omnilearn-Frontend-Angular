@@ -5,9 +5,9 @@
     width: 100%;
     padding-left: 1%;
     padding-right: 1%;
-    padding-top: 5% ;
     display: flex;
     gap: 1%;
+    top:10px;
 }
 
 .hamburger-menu{
@@ -348,14 +348,14 @@
     width: 100%;
     padding-left: 1%;
     padding-right: 1%;
-    padding-top: 11% ;
+    /* padding-top: 11% ; */
     display: flex;
     gap: 1%;
   }
 
   .hamburger-menu {
     position: fixed;
-    top: 80px;
+    top: 0.5%;
     left: 20px;
     z-index: 1000;
     background: none;
@@ -398,8 +398,9 @@
 
   .hamburger-menu {
     position: fixed;
-    top: 80px;
+    top: 0.5%;
     left: 20px;
+    height: 25px;
     z-index: 1000;
     background: none;
     border: none;
@@ -439,8 +440,9 @@
 @media (max-width:750px){
 
   .hamburger-menu {
+    height: 25px;
     position: fixed;
-    top: 80px;
+    top: 0.5%;
     left: 20px;
     z-index: 1000;
     background: none;
@@ -481,8 +483,9 @@
 @media (max-width:700px){
 
   .hamburger-menu {
+    height: 25px;
     position: fixed;
-    top: 80px;
+    top: 0.5%;
     left: 20px;
     z-index: 1000;
     background: none;
@@ -523,11 +526,12 @@
 @media (max-width:600px){
 
   .profile-page{
+    height: 25px;
     height: 900px;
     width: 100%;
     padding-left: 1%;
     padding-right: 1%;
-    padding-top: 20% ;
+    /* padding-top: 20% ; */
     display: flex;
     gap: 1%;
   }
@@ -538,8 +542,9 @@
 
 
   .hamburger-menu {
+    height: 25px;
     position: fixed;
-    top: 80px;
+    top: 0.5%;
     left: 20px;
     z-index: 1000;
     background: none;
@@ -585,7 +590,7 @@
     width: 100%;
     padding-left: 1%;
     padding-right: 1%;
-    padding-top: 20% ;
+    padding-top: 1% ;
     display: flex;
     gap: 1%;
   }
@@ -596,8 +601,9 @@
 
 
   .hamburger-menu {
+    height: 25px;
     position: fixed;
-    top: 80px;
+    top: 0.3%;
     left: 20px;
     z-index: 1000;
     background: none;

@@ -304,5 +304,9 @@ export class KoursesComponent implements OnInit {
     }
 
   }
+
+  openInNewTab(affiliateLink:string){
+    window.open(affiliateLink, '_blank')
+  }
   
 }

@@ -117,16 +117,9 @@ export class StateService {
   //http://localhost:8080
   //https://incredible-trust-production.up.railway.app
   private baseURL = "https://incredible-trust-production.up.railway.app";
-  private baseURLuserList = "https://incredible-trust-production.up.railway.app/api/v1/users";
   private baseURLtopicList  = "https://incredible-trust-production.up.railway.app/api/v1/topic_list";
   private baseURLaddUserInfo = "https://incredible-trust-production.up.railway.app/api/v1/register";
   private baseURLloginInfo = "https://incredible-trust-production.up.railway.app/api/v1/loginInfo";
-
-  getUserList():Observable<User[]>{
-
-    return this.httpClient.get<User[]>(`${this.baseURLuserList}`) ;
-
-  }
 
   getTopicList():Observable<TopicList[]>{
     return this.httpClient.get<TopicList[]>(`${this.baseURLtopicList}`);
