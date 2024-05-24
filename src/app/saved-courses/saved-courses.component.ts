@@ -73,5 +73,9 @@ export class SavedCoursesComponent implements OnInit {
     localStorage.setItem('lastRoute', this.router.url);
   }
 
+  openInNewTab(affiliateLink:string){
+    window.open(affiliateLink, '_blank')
+  }
+
 
 }
