@@ -2,6 +2,7 @@
 .background {
     background-size:contain;
     background-position: center;
+    background-position-y: 10%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 70vh;
@@ -703,7 +704,7 @@
 
 
 /*Hover*/
-.card:hover {
+/* .card:hover {
   background-color: #1b1b1b25;
 }
 
@@ -713,7 +714,7 @@
 
 .card:hover .card-back {
   transform: translateX(0);
-}
+} */
 
 
 

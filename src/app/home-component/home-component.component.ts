@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { StateService } from '../state.service';
 import { AdminPageComponent } from '../admin-page/admin-page.component';
+import { User } from '../user';
 
 @Component({
   selector: 'app-home-component',
@@ -15,6 +16,8 @@ export class HomeComponentComponent implements OnInit {
   login:boolean = false;
   userName!:string;
   adminAcess:boolean = false;
+  userdata!: User;
+  initials!:string;
 
   constructor(private dialog : MatDialog,private router:Router,private service:StateService) {
 
@@ -23,7 +26,7 @@ export class HomeComponentComponent implements OnInit {
       this.userName = user;
     }
 
-    if(this.userName === 'shashankvaish1109' || this.userName === 'skabd17'){
+    if(this.userName === 'shashankvaish1109' || this.userName === 'sk17abd'){
       this.adminAcess = true;
     }
 
@@ -38,6 +41,15 @@ export class HomeComponentComponent implements OnInit {
     else{
       this.login = false;
     }
+
+    const data = localStorage.getItem('userName');
+
+
+    console.log("userdata",data);
+    if(data!==null){
+      this.initials = data.charAt(0);
+    }
+
   }
 
   ngOnInit(): void {

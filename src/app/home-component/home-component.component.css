@@ -148,13 +148,24 @@
     transition: 0.7s;
   }
 
+
+  
+  .initials {
+    text-transform: uppercase;
+    font-size: 20px;
+    transform: translateX(25%);
+    
+  }
+
   .btn {
     height: 25px;
     width: 25px;
     border-radius: 25px;
     margin-left:auto;
-    background-color: #3653f8;
+    background-color: #0979f0;;
     margin-top: 0.5%;
+    justify-content: center;
+    align-items: center;
    }
 
    .btn:hover{
