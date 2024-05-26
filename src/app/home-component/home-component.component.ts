@@ -132,5 +132,11 @@ export class HomeComponentComponent implements OnInit {
   }
 
 
+  isRightBarOpen: boolean = false;
+
+  toggleLeftBar() {
+    this.isRightBarOpen = !this.isRightBarOpen;
+  }
+
 
 }
