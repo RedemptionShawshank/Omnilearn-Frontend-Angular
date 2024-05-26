@@ -115,11 +115,11 @@ export class StateService {
     this.courseListCompTrigger.next();
   }
   //http://localhost:8080
-  //https://incredible-trust-production.up.railway.app
-  private baseURL = "https://incredible-trust-production.up.railway.app";
-  private baseURLtopicList  = "https://incredible-trust-production.up.railway.app/api/v1/topic_list";
-  private baseURLaddUserInfo = "https://incredible-trust-production.up.railway.app/api/v1/register";
-  private baseURLloginInfo = "https://incredible-trust-production.up.railway.app/api/v1/loginInfo";
+  //https://springboot-backend-production-a33c.up.railway.app
+  private baseURL = "https://springboot-backend-production-a33c.up.railway.app";
+  private baseURLtopicList  = "https://springboot-backend-production-a33c.up.railway.app/api/v1/topic_list";
+  private baseURLaddUserInfo = "https://springboot-backend-production-a33c.up.railway.app/api/v1/register";
+  private baseURLloginInfo = "https://springboot-backend-production-a33c.up.railway.app/api/v1/loginInfo";
 
   getTopicList():Observable<TopicList[]>{
     return this.httpClient.get<TopicList[]>(`${this.baseURLtopicList}`);
@@ -129,11 +129,11 @@ export class StateService {
 
     this.topicName = data;
 
-    this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/path-variable',data).subscribe(value =>{
+    this.httpClient.post<string>('https://springboot-backend-production-a33c.up.railway.app/api/v1/path-variable',data).subscribe(value =>{
       this.receivedPlatformList = value;
     });
 
-    return this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/path-variable',data);
+    return this.httpClient.post<string>('https://springboot-backend-production-a33c.up.railway.app/api/v1/path-variable',data);
   }
 
   getFavouriteList(userName:string,topicName:string):Observable<FavouriteList[]>{
@@ -141,15 +141,15 @@ export class StateService {
       userName:userName,
       topicName:topicName
     };
-    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/favList',body);
+    return this.httpClient.post<FavouriteList[]>('https://springboot-backend-production-a33c.up.railway.app/api/v1/favList',body);
   }
 
   getFavouriteListByUsername(userName:string):Observable<FavouriteList[]>{
-    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/userFavlist',userName);
+    return this.httpClient.post<FavouriteList[]>('https://springboot-backend-production-a33c.up.railway.app/api/v1/userFavlist',userName);
   }
 
   addFavourite(favorite: FavouriteList):Observable<FavouriteList[]>{
-    return this.httpClient.post<FavouriteList[]>('https://incredible-trust-production.up.railway.app/api/v1/addFavourite',favorite);
+    return this.httpClient.post<FavouriteList[]>('https://springboot-backend-production-a33c.up.railway.app/api/v1/addFavourite',favorite);
   }
 
   addUserinfo(user: RegisterDto){ // if we don't know what is the response type of our api, we can add "Object or any" type in Observable
@@ -201,26 +201,26 @@ export class StateService {
       otp:otp
     };
 
-    return this.httpClient.put('https://incredible-trust-production.up.railway.app/api/v1/verify-account',body,{responseType: 'text' });
+    return this.httpClient.put('https://springboot-backend-production-a33c.up.railway.app/api/v1/verify-account',body,{responseType: 'text' });
   }
 
   resendOTP(emailId:string): Observable<Object>{
     console.log("entered resend otp")
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // const params = new HttpParams().set('paramName', emailId); {params,headers, responseType:'text'}
-    return this.httpClient.put('https://incredible-trust-production.up.railway.app/api/v1/regenerate-otp',emailId);
+    return this.httpClient.put('https://springboot-backend-production-a33c.up.railway.app/api/v1/regenerate-otp',emailId);
   }
 
   sendCourseList(rows:Array<Object>):Observable<string>{
 
     console.log("entered in sendCourseList",rows);
-    return this.httpClient.post<string>('https://incredible-trust-production.up.railway.app/api/v1/addCourses',rows);
+    return this.httpClient.post<string>('https://springboot-backend-production-a33c.up.railway.app/api/v1/addCourses',rows);
 
   }
 
   getTopicOfType(type:string):Observable<TopicList[]>{
     // const encodedName = encodeURIComponent(type);
-    return this.httpClient.get<TopicList[]>(`https://incredible-trust-production.up.railway.app/api/v1/${type}`);
+    return this.httpClient.get<TopicList[]>(`https://springboot-backend-production-a33c.up.railway.app/api/v1/${type}`);
   }
 
 
