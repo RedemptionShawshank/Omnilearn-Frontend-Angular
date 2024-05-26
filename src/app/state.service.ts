@@ -220,7 +220,7 @@ export class StateService {
 
   getTopicOfType(type:string):Observable<TopicList[]>{
      const encodedName = encodeURIComponent(type);
-    return this.httpClient.get<TopicList[]>('https://incredible-trust-production.up.railway.app/api/v1/${encodedName});
+    return this.httpClient.get<TopicList[]>('https://incredible-trust-production.up.railway.app/api/v1/${encodedName}');
   }
 
 
