@@ -27,8 +27,9 @@
         </button>
     </div>
  
-    <div class="btn" (mouseover) ="showDropDown()" *ngIf="login">
-      <div class="initials">{{initials}}</div></div>
+    <div class="btn" (click) ="showDropDown()" *ngIf="login">
+      <div class="initials">{{initials}}</div>
+    </div>
 
     <!-- <div class="profile-image">
       <div class="initials">{{initials}}</div>
@@ -38,7 +39,9 @@
         <a (click)="navigateToProfile()">Profile</a>
         <a (click)="logOut()">Logout</a>
         <a *ngIf="adminAcess" (click)="openAdminPage()">Admin</a>
+        <a href="">Suggestion</a>
     </div>
+    
 
     <!-- <button mat-fab class="btn" matTooltip="Click to expand" (click)="showDropDown()" *ngIf="login"></button>
     <div class="dropdown" *ngIf="isHovered">

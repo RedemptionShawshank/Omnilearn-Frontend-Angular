@@ -11,33 +11,35 @@
 
       <br>
       <br>
-      <form class="search-bar">
+      <div class="searchbox">
+        <form class="search-bar">
           <input type="search" (click)="scrollToSearchResults()" placeholder="Search..." [(ngModel)]="courseFilter" [ngModelOptions]="{ standalone: true }" #searchResults class="search-input">
-          <!-- <button type="submit">Search</button> -->
-      </form>
+        </form>
+      </div>
+
 
 
       <div class="list-heading">
-        <b>Topic List</b>
+        <ul>
+          <li (click)="getTopicList()">All</li>
+          <li (click)="getTopicOfType('Software Engineering')">Software Engineering</li>
+          <li (click)="getTopicOfType('Data Science & Analytics')">Data Science & Analytics</li>
+          <li>Finance</li>
+          <li>Sales</li>
+          <li>Marketing</li>
+        </ul>
       </div>
       <div class="card-container" *ngIf="!loading">
         <div class="card" *ngFor="let topic of topicList|filter:courseFilter" (click)="navigateToKourses(topic.topicName)">
-          <div class="wrapper-cards" >
-            <div class="card-front">
-              <div >
-                <div class="box" >
-                    <img class="image-box" [src]="topic.imagePath" alt="ds-algo" >
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="topic-name">
-                <div class="details"><b>{{topic.topicName}}</b></div>
-              </div>
-            </div>
+          <img class="card-img" [src]="topic.imagePath" alt="ds-algo">
+          <div class="card-info">
+            <p class="text-title">{{topic.topicName}}</p>
+            <p class="text-body">{{topic.description}}</p>
           </div>
         </div>
       </div>
+
+
   </div>
 
   <!-- <div class="loader-content" *ngIf="loading" #searchResults >

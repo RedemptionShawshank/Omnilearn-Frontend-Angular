@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { StateService } from '../state.service';
 import { TopicList } from '../topic-list';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-course-list',
@@ -77,7 +76,7 @@ export class CourseListComponent implements OnInit {
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  topicList!: TopicList[];
+  topicList: TopicList[] = [];
 
   ngOnInit(): void {
 
@@ -108,11 +107,10 @@ export class CourseListComponent implements OnInit {
 
 
 
-  private getTopicList(){
+  getTopicList(){
     this.userService.getTopicList().subscribe(data =>{
       this.topicList = data;
     });
-
   }
 
 
@@ -140,6 +138,16 @@ export class CourseListComponent implements OnInit {
     });
   }
 
+  // topic!:TopicList[];
+  topic!:TopicList[];
+  getTopicOfType(type:string){
+
+    this.userService.getTopicOfType(type).subscribe(data=>{
+
+      this.topicList = data;
+      // console.log("on click of type: ",this.topic);
+    });
+  }
 
 
 }

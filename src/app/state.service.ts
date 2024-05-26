@@ -218,7 +218,9 @@ export class StateService {
 
   }
 
-
+  getTopicOfType(type:string):Observable<TopicList[]>{
+    return this.httpClient.get<TopicList[]>(`https://incredible-trust-production.up.railway.app/api/v1/${type}`);
+  }
 
 
 }
