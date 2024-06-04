@@ -1,6 +1,5 @@
+
 <div class="main" *ngIf="showTopicList">
-
-
     <div class="background" [ngStyle]="{'background-image': 'url(\'assets/logoCB.jpeg\')'}">
 
 
@@ -25,8 +24,7 @@
           <li (click)="getTopicOfType('Software Engineering')">Software Engineering</li>
           <li (click)="getTopicOfType('Data Science & Analytics')">Data Science & Analytics</li>
           <li>Finance</li>
-          <li>Sales</li>
-          <li>Marketing</li>
+          <li>MBA</li>
         </ul>
       </div>
       <div class="card-container" *ngIf="!loading">
@@ -40,7 +38,10 @@
       </div>
 
 
+      <app-footer></app-footer>
   </div>
+
+
 
   <!-- <div class="loader-content" *ngIf="loading" #searchResults >
       <div class="loader">
@@ -121,10 +122,14 @@
       </div>
 
   </div> -->
-
 </div>
 
 <router-outlet *ngIf="!showTopicList"></router-outlet>
+
+
+
+
+
 
 
 

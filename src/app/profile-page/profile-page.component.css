@@ -51,10 +51,10 @@
 
 .user-details{
 
-    height: 100%;
+    height: auto;
     width: 100%;
     border-radius: 10px;
-    background-color: rgb(242, 242, 243);
+    background-color: rgb(255, 255, 255);
     display: flex;
     /* justify-content: center; for horizontally center*/
     padding-top: 1%;

@@ -163,7 +163,8 @@ export class LoginComponent {
     }
 
 
-    this.service.sendLoginInfo(this.loginInfo).subscribe((data)=>{
+    this.service.sendLoginInfo(this.loginInfo).subscribe({
+      next: (data)=>{
       // console.log("received data",data);
       if(data !=null){
 
@@ -188,7 +189,14 @@ export class LoginComponent {
         console.log("wrong password",this.wrongPassword);
       }
     },
-    error=> console.log(error));
+    error: (error)=> {
+      console.log(error)
+    }
+    // complete: ()=>{
+
+    // }
+  });
+
   }
 
 

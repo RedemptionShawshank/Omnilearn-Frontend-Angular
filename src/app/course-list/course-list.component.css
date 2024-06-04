@@ -1,4 +1,9 @@
 @import url(https://fonts.googleapis.com/css2?family=REM:wght@100;200;400;500;600;700;800&display=swap);
+
+.footer{
+  position:relative;
+}
+
 .background {
     background-size:contain;
     background-position: center;
@@ -121,10 +126,12 @@
     /* gap: 5% ; */
 
     padding-top: 5%;
-    padding-bottom: 5%;
+    /* padding-bottom: 5%; */
 
     padding-right: 5%;
     padding-left: 5%;
+
+    margin-bottom: 10%;
 
 }
 
@@ -191,6 +198,23 @@
  .card-img:hover {
   box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
  }
+
+ @keyframes jadoo{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.card{
+  animation: jadoo linear;
+  animation-range: entry 0 cover 50%;
+  animation-timeline: view();
+}
+
+
 @media (max-width: 8000px) {
   .card-container {
     grid-template-columns: repeat(4, 1fr); /* Display 4 columns when viewport width is less than 1200px */

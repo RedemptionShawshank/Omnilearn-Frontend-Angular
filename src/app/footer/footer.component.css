@@ -1,46 +1,45 @@
 /* footer.component.css */
-
 .footer {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    background-color: #343a40; /* Dark background color */
-    color: #fff; /* Light text color */
-  }
-  
-  .footer h5 {
-    color: #fff; /* Light text color for headings */
-  }
-  
-  .footer ul {
-    padding: 0;
-    list-style: none;
-  }
-  
-  .footer ul li {
-    margin-bottom: 10px;
-  }
-  
-  .footer ul li a {
-    color: #fff; /* Light text color for links */
-  }
-  
-  .footer ul li a:hover {
-    color: #f8f9fa; /* Hover color for links */
-  }
-  
-  .footer hr {
-    border-top: 1px solid #868e96; /* Light border color */
-  }
-  
-  .footer address {
-    margin-bottom: 20px;
-  }
-  
-  .footer address a {
-    color: #fff; /* Light text color for links in address */
-  }
-  
-  .footer address a:hover {
-    color: #f8f9fa; /* Hover color for links in address */
-  }
-  
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-links li {
+  display: inline;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.home{
+  cursor: pointer;
+}
