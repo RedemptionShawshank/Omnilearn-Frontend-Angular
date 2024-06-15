@@ -9,6 +9,7 @@ import { RegisterDto } from '../register-dto';
 import { OTPverificationComponent } from '../otpverification/otpverification.component';
 import { AuthenticationCardComponent } from '../authentication-card/authentication-card.component';
 import { timer } from 'rxjs/internal/observable/timer';
+import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 
 // interface userInfo {
 //   id: number;
@@ -67,22 +68,7 @@ export class LoginComponent {
     }
   }
 
-  closeDialogSignIn():void{
 
-    if(!this.myFormSignIn.valid){
-      this.invalid = true;
-      this.wrongPassword = false;
-    }
-    console.log("invalid",this.invalid);
-    console.log("wrong password",this.wrongPassword);
-    if(!this.invalid){
-      this.dialogRef.close();
-    }
-    // else{
-    //   this.wrongPassword = false;
-    //   this.dialogRef.close();
-    // }
-  }
 
   saveUserInfo(){
     
@@ -98,8 +84,8 @@ export class LoginComponent {
 
   openOTP(){
     this.dialog.open(OTPverificationComponent, {
-      width: '300px',
-      height: '400px' // Set width as needed
+      width: '400px',
+      height: '300px' // Set width as needed
     });
   }
 
@@ -153,12 +139,21 @@ export class LoginComponent {
     // });
   }
 
+  openForgetPassword():void{
+    this.dialogRef.close();
+    this.dialog.open(ForgetPasswordComponent, {
+      width: 'auto',
+      height: 'auto',
+    });
+  }
 
-  loginCheck(){
+
+  onSubmitLoginInfo(){
 
     if(!this.myFormSignIn.valid){
       this.invalid = true;
-      console.log("invalid form sign in");
+      this.wrongPassword = false;
+      // console.log("invalid form sign in");
       return;
     }
 
@@ -180,6 +175,7 @@ export class LoginComponent {
 
         this.wrongPassword = false;
         this.openVerifiedCard();
+        this.closeDialogSignIn();
 
       }
       else{
@@ -187,6 +183,7 @@ export class LoginComponent {
         this.wrongPassword = true;
         this.invalid = false;
         console.log("wrong password",this.wrongPassword);
+        this.closeDialogSignIn();
       }
     },
     error: (error)=> {
@@ -199,9 +196,12 @@ export class LoginComponent {
 
   }
 
+  closeDialogSignIn():void{
+    // console.log("invalid",this.invalid);
+    // console.log("wrong password",this.wrongPassword);
+    if(!this.wrongPassword){
+      this.dialogRef.close();
+    }
 
-
-  onSubmitLoginInfo(){
-    this.loginCheck();
   }
 }

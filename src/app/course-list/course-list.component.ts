@@ -132,11 +132,7 @@ export class CourseListComponent implements OnInit {
     window.scrollTo({top:400,behavior:'smooth'});
   }
 
-  openOverlay(): void {
-    this.dialog.open(LoginComponent, {
-      width: '400px', // Set width as needed
-    });
-  }
+
 
   // topic!:TopicList[];
   topic!:TopicList[];

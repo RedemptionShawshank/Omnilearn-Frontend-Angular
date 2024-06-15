@@ -9,6 +9,7 @@ import { PlatformCourseList } from './platform-course-list';
 import { FavouriteList } from './favourite-list';
 import { RegisterDto } from './register-dto';
 import { FormArray } from '@angular/forms';
+import { ForgetPassword } from './forget-password';
 
 
 @Injectable({
@@ -221,6 +222,14 @@ export class StateService {
   getTopicOfType(type:string):Observable<TopicList[]>{
     // const encodedName = encodeURIComponent(type);
     return this.httpClient.get<TopicList[]>(`https://springboot-backend-production-a33c.up.railway.app/api/v1/${type}`);
+  }
+
+  sendForgetPasswordInfo(info:ForgetPassword):Observable<Object>{
+    // const body = {
+    //   email:info.emailId,
+    //   otp:info.password
+    // };
+    return this.httpClient.put('https://springboot-backend-production-a33c.up.railway.app/api/v1/forget-password',info,{responseType: 'text'})
   }
 
 

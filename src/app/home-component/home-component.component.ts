@@ -79,7 +79,9 @@ export class HomeComponentComponent implements OnInit {
 
   openOverlay(): void {
     this.dialog.open(LoginComponent, {
-      width: '400px', // Set width as needed
+      width: '500px',
+      height: 'auto',
+      
     });
   }
 

@@ -25,6 +25,7 @@ import { OTPverificationComponent } from './otpverification/otpverification.comp
 import { AuthenticationCardComponent } from './authentication-card/authentication-card.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SavedCoursesComponent,
     OTPverificationComponent,
     AuthenticationCardComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,
