@@ -4,6 +4,8 @@ import { StateService } from '../state.service';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { OTPverificationComponent } from '../otpverification/otpverification.component';
+import { AuthenticationCardComponent } from '../authentication-card/authentication-card.component';
 
 @Component({
   selector: 'app-forget-password',
@@ -18,13 +20,18 @@ export class ForgetPasswordComponent {
   invalid:boolean=false;
   emailCheck:boolean = true;
   passwordSmall:boolean = false;
+  accountVerified:boolean=false;
   @ViewChild('myFormForgetPassword') myFormForgetPassword!: NgForm;
+  @ViewChild('accountCheck') accountCheck!: NgForm;
 
   constructor(
     private service:StateService,
     private dialogRef: MatDialogRef<ForgetPasswordComponent>,
+    private dialogRefVerifyCard:MatDialogRef<AuthenticationCardComponent>,
     private dialog : MatDialog
-  ){}
+  ){
+    this.accountVerified = service.getAccountCheck();
+  }
 
   onSubmitForgetPassword():void{
 
@@ -53,6 +60,13 @@ export class ForgetPasswordComponent {
       return;
     }
 
+    const val = localStorage.getItem('emailId');
+
+    if(val!==null){
+      this.forgetPassword.emailId = val;
+    }
+
+
     this.service.sendForgetPasswordInfo(this.forgetPassword).subscribe({
       next:(data)=>{
         console.log("response: ",data);
@@ -64,6 +78,8 @@ export class ForgetPasswordComponent {
         }
         else{
           this.closeBox();
+          this.openVerifiedCard();
+          // this.dialogRefVerifyCard.close();
         }
       },
       error:(error)=>{
@@ -72,6 +88,12 @@ export class ForgetPasswordComponent {
     });
 
 
+  }
+
+  openVerifiedCard(){
+    this.dialogRefVerifyCard = this.dialog.open(AuthenticationCardComponent, {
+      width: '300px' // Set width as needed
+    });
   }
 
   closeBox(){
@@ -83,6 +105,67 @@ export class ForgetPasswordComponent {
     this.dialog.open(LoginComponent, {
       width: 'auto',
       height: 'auto',
+    });
+  }
+
+  emailVerification(){
+
+    if(!this.accountCheck.valid){
+      this.invalid = true;
+      this.emailCheck = true;
+      return;
+    }
+
+    localStorage.setItem('emailId',this.forgetPassword.emailId);
+
+    this.service.checkEmail(this.forgetPassword.emailId).subscribe({
+      next: (data:boolean)=>{
+        if(data){
+          this.emailCheck = true;
+          this.openOTP();
+          this.resendOTP();
+          // this.dialogRef.close();
+        }
+        else{
+          this.emailCheck = false;
+        }
+      },
+      error: (error)=>{
+        console.log(error);
+      },
+      complete: ()=>{
+        console.log("emailCheck ",this.emailCheck);
+        if(this.emailCheck){
+          this.accountVerified = this.service.getAccountCheck();
+          console.log("account check: ",this.accountVerified);
+        }
+      }
+    });
+  }
+
+  resendOTP(){
+    const emailId = localStorage.getItem('emailId');
+
+    if(emailId !== null){
+      this.service.resendOTP(emailId).subscribe( data=>{
+
+        // console.log(data);
+        if(data==="Sent"){
+          this.invalid = false;
+        }
+
+      },
+    error => console.log(error));
+    }
+
+    return;
+
+  }
+
+  openOTP(){
+    this.dialog.open(OTPverificationComponent, {
+      width: 'auto',
+      height: 'auto' // Set width as needed
     });
   }
 

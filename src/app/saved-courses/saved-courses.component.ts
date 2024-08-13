@@ -52,9 +52,8 @@ export class SavedCoursesComponent implements OnInit {
 
   }
 
-  goToWallet(){
-    this.router.navigate(['/username/wallet']);
-
+  goToEdit(){
+    this.router.navigate(['/username/edit']);
   }
 
   goToSavedCoures(){

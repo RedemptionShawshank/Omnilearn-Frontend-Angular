@@ -1,13 +1,10 @@
 
-<div class="main" *ngIf="showTopicList">
+<div *ngIf="showTopicList">
     <div class="background" [ngStyle]="{'background-image': 'url(\'assets/logoCB.jpeg\')'}">
-
-
     </div>
 
 
     <div class="courses-list" #scrollTarget>
-
       <br>
       <br>
       <div class="searchbox">
@@ -15,9 +12,7 @@
           <input type="search" (click)="scrollToSearchResults()" placeholder="Search..." [(ngModel)]="courseFilter" [ngModelOptions]="{ standalone: true }" #searchResults class="search-input">
         </form>
       </div>
-
-
-
+      <br>
       <div class="list-heading">
         <ul>
           <li (click)="getTopicList()">All</li>
@@ -32,7 +27,7 @@
           <img class="card-img" [src]="topic.imagePath" alt="ds-algo">
           <div class="card-info">
             <p class="text-title">{{topic.topicName}}</p>
-            <p class="text-body">{{topic.description}}</p>
+            <!-- <p class="text-body">{{topic.description}}</p> -->
           </div>
         </div>
       </div>

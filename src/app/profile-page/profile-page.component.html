@@ -11,7 +11,7 @@
         <!-- <a class="options" (click)="goToWallet()">Wallet</a> -->
         <a class="options" (click)="goToSavedCoures()">Saved Courses</a>
         <a class="options">Reviews</a>
-        <a class="options">Edit Profile</a>
+        <a class="options" (click)="goToEdit()">Edit Profile</a>
 
     </div>
 
@@ -117,6 +117,16 @@
         </div>
         
     </div>
+
+    <!-- <div class="container">
+      <h1>ChatGPT Integration</h1>
+      <textarea [(ngModel)]="prompt" placeholder="Enter your prompt here"></textarea>
+      <button (click)="getResponse()">Get Response</button>
+      <div *ngIf="response">
+        <h2>Response:</h2>
+        <p>{{ response }}</p>
+      </div>
+    </div> -->
 </div>
 
 <app-footer></app-footer>

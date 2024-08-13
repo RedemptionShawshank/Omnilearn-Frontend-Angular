@@ -1,0 +1,43 @@
+<div class="profile-page">
+    <button class="hamburger-menu" (click)="toggleLeftBar()">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+  
+      <div class="left-bar" [class.show]="isLeftBarOpen">
+          <a class="options" (click)="goToProfile()">Profile</a>
+          <!-- <a class="options" (click)="goToWallet()">Wallet</a> -->
+          <a class="options" (click)="goToSavedCoures()">Saved Courses</a>
+          <a class="options">Reviews</a>
+          <a class="options" (click)="goToEdit()">Edit Profile</a>
+  
+      </div>
+
+      <div class="user-details">
+        <div class="card">
+            <div class="editFields">
+                <div>College Name: </div>
+                <input
+                required [(ngModel)]="collegeName" name="Update College Name"
+                placeholder="College Name"
+                type="college"
+                class="inputField"
+                />
+                <br>
+                <br>
+                <div>Company Name: </div>
+                <input
+                required [(ngModel)]="companyName" name="Update College Name"
+                placeholder="Company Name"
+                type="company"
+                class="inputField"
+                />
+            </div>
+
+        </div>
+      </div>
+</div>
+
+<app-footer></app-footer>
+

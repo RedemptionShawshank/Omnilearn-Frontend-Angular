@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StateService } from '../state.service';
 import { User } from '../user';
+import { ChatgptserviceService } from '../chatgptservice.service';
 
 interface userInfo {
   id: number;
@@ -25,7 +26,9 @@ export class ProfilePageComponent implements OnInit {
   initials!:string;
 
 
-  constructor(private router:Router,private dialog : MatDialog,private service:StateService){
+  constructor(private router:Router,private dialog : MatDialog,private service:StateService,
+    private chatgptService: ChatgptserviceService
+  ){
 
     this.userdata = service.receivedInfo;
     if(localStorage.getItem('recievedData') != null){
@@ -61,9 +64,8 @@ export class ProfilePageComponent implements OnInit {
     this.router.navigate(['/username/profilePage']);
   }
 
-  goToWallet(){
-    this.router.navigate(['/username/wallet']);
-
+  goToEdit(){
+    this.router.navigate(['/username/edit']);
   }
 
   goToSavedCoures(){
@@ -99,6 +101,21 @@ export class ProfilePageComponent implements OnInit {
   @HostListener('window:beforeunload', ['$event'])
   beforeUnloadHandler(event: Event) {
     localStorage.setItem('lastRoute', this.router.url);
+  }
+
+
+
+  prompt: string = '';
+  response: string = '';
+  getResponse() {
+    this.chatgptService.getChatResponse(this.prompt).subscribe(
+      (data) => {
+        this.response = data.choices[0].text.trim();
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
 

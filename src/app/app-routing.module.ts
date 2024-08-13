@@ -7,6 +7,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { UserWalletComponent } from './user-wallet/user-wallet.component';
 import { LoginComponent } from './login/login.component';
 import { SavedCoursesComponent } from './saved-courses/saved-courses.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -16,9 +17,8 @@ const routes: Routes = [
   {path:'username/profilePage',component:ProfilePageComponent},
   {path:'username/wallet',component:UserWalletComponent},
   {path:'username/savedCourses',component:SavedCoursesComponent},
-  {path:'autorization',component:LoginComponent}
-
-
+  {path:'autorization',component:LoginComponent},
+  {path:'username/edit',component:EditProfileComponent}
 ];
 
 @NgModule({

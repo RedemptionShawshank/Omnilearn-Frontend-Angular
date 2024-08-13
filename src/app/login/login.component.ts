@@ -84,8 +84,8 @@ export class LoginComponent {
 
   openOTP(){
     this.dialog.open(OTPverificationComponent, {
-      width: '400px',
-      height: '300px' // Set width as needed
+      width: 'auto',
+      height: 'auto' // Set width as needed
     });
   }
 

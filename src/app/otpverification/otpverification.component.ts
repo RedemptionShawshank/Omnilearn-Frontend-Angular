@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { StateService } from '../state.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationCardComponent } from '../authentication-card/authentication-card.component';
+import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 
 @Component({
   selector: 'app-otpverification',
@@ -47,7 +48,9 @@ export class OTPverificationComponent {
   
     // Concatenate the values to form the full OTP string
     const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
-    console.log("otp entered: ",otp);
+    // console.log("otp entered: ",otp);
+
+    this.service.setOTP(otp);
 
     const emailId = localStorage.getItem('emailId');
 
@@ -57,7 +60,9 @@ export class OTPverificationComponent {
         if(data === "Verified"){
           this.invalid = false;
           this.dialogRef.close();
+          this.service.setAccountCheck(true);
           this.openVerifiedCard();
+          this.openForgetPassword();
         }
         else{
           this.invalid = true;
@@ -67,6 +72,13 @@ export class OTPverificationComponent {
     }
 
 
+  }
+
+  openForgetPassword():void{
+    this.dialog.open(ForgetPasswordComponent, {
+      width: 'auto',
+      height: 'auto',
+    });
   }
 
   resendOTP(){
