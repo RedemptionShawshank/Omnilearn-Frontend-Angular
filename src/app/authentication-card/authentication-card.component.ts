@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { timer } from 'rxjs/internal/observable/timer';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-authentication-card',
@@ -10,8 +11,9 @@ export class AuthenticationCardComponent {
 
   accountCreated:boolean = false;;
   loggedIn!:boolean;
+  passwordUpdated:boolean=false;
 
-  constructor(){
+  constructor(private service:StateService){
 
     const flag1 = localStorage.getItem('AccountCreated');
     if(flag1!==null && flag1 === 'true'){
@@ -32,6 +34,8 @@ export class AuthenticationCardComponent {
     else{
       this.loggedIn = false;
     }
+
+    this.passwordUpdated = service.getPasswordUpdate();
   }
 
 

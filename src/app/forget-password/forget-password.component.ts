@@ -21,6 +21,7 @@ export class ForgetPasswordComponent {
   emailCheck:boolean = true;
   passwordSmall:boolean = false;
   accountVerified:boolean=false;
+  fpassword:boolean=false;
   @ViewChild('myFormForgetPassword') myFormForgetPassword!: NgForm;
   @ViewChild('accountCheck') accountCheck!: NgForm;
 
@@ -30,6 +31,7 @@ export class ForgetPasswordComponent {
     private dialogRefVerifyCard:MatDialogRef<AuthenticationCardComponent>,
     private dialog : MatDialog
   ){
+    console.log("accountVerified: ",service.getAccountCheck());
     this.accountVerified = service.getAccountCheck();
   }
 
@@ -78,6 +80,7 @@ export class ForgetPasswordComponent {
         }
         else{
           this.closeBox();
+          this.service.setPasswordUpdate(true);
           this.openVerifiedCard();
           // this.dialogRefVerifyCard.close();
         }
@@ -94,6 +97,10 @@ export class ForgetPasswordComponent {
     this.dialogRefVerifyCard = this.dialog.open(AuthenticationCardComponent, {
       width: '300px' // Set width as needed
     });
+    setTimeout(()=>{
+      console.log("inside timeout");
+      this.dialogRefVerifyCard.close();
+    },3000);
   }
 
   closeBox(){
@@ -115,6 +122,8 @@ export class ForgetPasswordComponent {
       this.emailCheck = true;
       return;
     }
+
+    this.closeBox();
 
     localStorage.setItem('emailId',this.forgetPassword.emailId);
 

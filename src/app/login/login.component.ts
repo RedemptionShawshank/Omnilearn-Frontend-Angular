@@ -89,35 +89,51 @@ export class LoginComponent {
     });
   }
 
-  onSubmitSignUpInfo(){
+  onSubmitSignUpInfo() {
+    this.service.setPasswordUpdate(false);
+    this.service.setForgetPassword(false);
 
-    if(!this.myFormSignUp.valid){
-      console.log("invalid form sign up");
+    if (!this.myFormSignUp.valid) {
+      console.log("Invalid form sign up");
       this.invalid = true;
       return;
     }
-
-    console.log("user entered: ",this.user);
-    const email = this.user.emailId;
-    var username:any = '';
-    for(var i=0;i<email.length;i++){
-      if(email.charAt(i)!='@'){
-        username += email.charAt(i);
+  
+    this.service.checkEmail(this.user.emailId).subscribe({
+      next: (data) => {
+        if (data) {
+          console.warn("Email already exists");
+          return; // Exit if the email exists
+        }
+  
+        // This block of code will only run if the email does not exist
+        console.log("User entered: ", this.user);
+        const email = this.user.emailId;
+        let username: any = '';
+  
+        for (let i = 0; i < email.length; i++) {
+          if (email.charAt(i) != '@') {
+            username += email.charAt(i);
+          } else {
+            break;
+          }
+        }
+  
+        this.user.username = username;
+        localStorage.setItem('userName', username);
+        localStorage.setItem('emailId', this.user.emailId);
+        this.saveUserInfo(); // Sending the submitted info to backend so that it can be saved into database
+  
+        this.openOTP(); // Open OTP dialog or process
+      },
+      error: (err) => {
+        console.error("Error checking email:", err);
+        // Handle error case if needed
       }
-      else{
-        break;
-      }
-    }
-    this.user.username = username;
-    localStorage.setItem('userName',username);
-    localStorage.setItem('emailId',this.user.emailId)
-    // console.log("user input",this.user);
-    // console.log(this.user);
-    this.saveUserInfo(); //sending the submited info to backend so that it can be saved into database
-
-    this.openOTP();
-
+    });
+  
   }
+  
 
   reloadPage() {
     window.location.reload();
@@ -140,6 +156,8 @@ export class LoginComponent {
   }
 
   openForgetPassword():void{
+    this.service.setForgetPassword(true);
+    this.service.setAccountCheck(false);
     this.dialogRef.close();
     this.dialog.open(ForgetPasswordComponent, {
       width: 'auto',
@@ -149,6 +167,8 @@ export class LoginComponent {
 
 
   onSubmitLoginInfo(){
+
+    this.service.setPasswordUpdate(false);
 
     if(!this.myFormSignIn.valid){
       this.invalid = true;

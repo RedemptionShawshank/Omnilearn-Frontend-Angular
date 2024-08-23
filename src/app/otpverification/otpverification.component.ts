@@ -62,7 +62,11 @@ export class OTPverificationComponent {
           this.dialogRef.close();
           this.service.setAccountCheck(true);
           this.openVerifiedCard();
-          this.openForgetPassword();
+          console.log("forget password: ",this.service.getForgetPassword());
+          if(this.service.getForgetPassword()){
+            this.openForgetPassword();
+          }
+
         }
         else{
           this.invalid = true;

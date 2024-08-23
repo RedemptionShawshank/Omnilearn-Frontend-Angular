@@ -230,7 +230,7 @@ export class StateService {
     //   otp:info.password
     // };
     return this.httpClient.put('https://springboot-backend-production-6956.up.railway.app/api/v1/forget-password',info,{responseType: 'text'})
-    return this.httpClient.put('http://localhost:8080/api/v1/forget-password',info,{responseType: 'text'})
+    return this.httpClient.put('https://springboot-backend-production-6956.up.railway.app/api/v1/forget-password',info,{responseType: 'text'})
   }
 
   //otp helper function
@@ -253,6 +253,26 @@ export class StateService {
   checkEmail(emailId:string):Observable<boolean>{
     return this.httpClient.get<boolean>(`https://springboot-backend-production-6956.up.railway.app/api/v1/emailCheck/${emailId}`);
   }
+
+  //forget password
+  forgetPassword:boolean=false;
+  setForgetPassword(val:boolean){
+    this.forgetPassword = val;
+  }
+  getForgetPassword(){
+    return this.forgetPassword;
+  }
+
+  passwordUpdate:boolean = false;
+  setPasswordUpdate(val:boolean){
+    this.passwordUpdate = val;
+  }
+  getPasswordUpdate(){
+    return this.passwordUpdate;
+  }
+
+
+  
 
 
 }
