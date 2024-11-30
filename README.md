@@ -26,10 +26,3 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-## notes
-
-i want to have a component in my webpage whose name is 'Wallet' please design an angular component(html,css and conponent.ts file) acoording to following descriptions-
-
-1. this component contains the information about the virtual money a user has in their account.
-2. when the user has logged in they can view this wallet page.
-3. 
