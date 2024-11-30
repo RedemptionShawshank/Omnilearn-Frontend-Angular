@@ -5,10 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 The Project is a website where users can find courses related to topics they want to study.
 
 • Developed a responsive front-end with State management to support seamless page reloads and navigation.
- • Built comprehensive frontend for user authentication features,login-signup, OTP verification, and password
- recovery.
- • Implemented efficient CRUD operations using Angular’s HttpClient and managed backend communication
- with RxJS Observables.
+
+ • Built comprehensive frontend for user authentication features,login-signup, OTP verification, and password recovery.
+ 
+ • Implemented efficient CRUD operations using Angular’s HttpClient and managed backend communication with RxJS Observables.
+ 
  • Created dynamic search and filter functionality using Angular Filter Pipe and ngx-slider.
 
 This is the Frontend part of the project.
