@@ -69,11 +69,7 @@ export class HomeComponentComponent implements OnInit {
     }
     else{
       this.login = false;
-    }
-
-    // console.log("login after in refresh: ",this.login);
-
-    
+    }    
 
   }
 

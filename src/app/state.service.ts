@@ -1,14 +1,11 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { User } from './user';
 import { TopicList } from './topic-list';
 import { LoginInfo } from './login-info';
 import { Router } from '@angular/router';
-import { PlatformCourseList } from './platform-course-list';
 import { FavouriteList } from './favourite-list';
 import { RegisterDto } from './register-dto';
-import { FormArray } from '@angular/forms';
 import { ForgetPassword } from './forget-password';
 
 
@@ -20,7 +17,6 @@ export class StateService {
   login:boolean = false;
   receivedInfo!: any;
   receivedPlatformList!:any;
-  // topicList: boolean = true;
   private backNavigationFlag = false;
   username:string ='';
   topicName!:string;
@@ -51,14 +47,6 @@ export class StateService {
 
 
   setTopicListFlag(status:boolean){
-    // console.log("topicList status",status);
-    // if(status == null){
-    //   localStorage.setItem('topicListFlag',String(this.topicList));
-    // }
-    // else{
-    //   this.topicList = status;
-    //   localStorage.setItem('topicListFlag',String(this.topicList));
-    // }
 
     localStorage.setItem('topicListFlag',String(status));
 
@@ -71,11 +59,9 @@ export class StateService {
     const storedValue: string | null = localStorage.getItem('topicListFlag');
 
     if(storedValue === 'true'){
-      // this.topicList = true;
       return true;
     }
     else if(storedValue === 'false'){
-      // this.topicList = false;
       return false;
     }
     else{
@@ -168,8 +154,6 @@ export class StateService {
 
       }
     });
-
-    // return this.httpClient.post(`${this.baseURLaddUserInfo}`,user,{ headers, observe: 'response' });
   }
 
   sendLoginInfo(loginInfo: LoginInfo): Observable<Object>{
@@ -180,13 +164,11 @@ export class StateService {
 
       const info = localStorage.getItem('recievedData');
       const parsedUser = info ? JSON.parse(info) : null;
-      // console.log("info in local storage: ",parsedUser);
 
       if(parsedUser){
         this.receivedInfo = parsedUser;
       }
 
-      // console.log("value of received info",this.receivedInfo);
     });
 
     return this.httpClient.post(`${this.baseURLloginInfo}`,loginInfo,{responseType: 'json'});
@@ -206,9 +188,6 @@ export class StateService {
   }
 
   resendOTP(emailId:string): Observable<Object>{
-    // console.log("entered resend otp")
-    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    // const params = new HttpParams().set('paramName', emailId); {params,headers, responseType:'text'}
     return this.httpClient.put('https://springboot-backend-production-6956.up.railway.app/api/v1/regenerate-otp',emailId);
   }
 
@@ -220,17 +199,11 @@ export class StateService {
   }
 
   getTopicOfType(type:string):Observable<TopicList[]>{
-    // const encodedName = encodeURIComponent(type);
     return this.httpClient.get<TopicList[]>(`https://springboot-backend-production-6956.up.railway.app/api/v1/${type}`);
   }
 
   sendForgetPasswordInfo(info:ForgetPassword):Observable<Object>{
-    // const body = {
-    //   email:info.emailId,
-    //   otp:info.password
-    // };
-    return this.httpClient.put('https://springboot-backend-production-6956.up.railway.app/api/v1/forget-password',info,{responseType: 'text'})
-    return this.httpClient.put('https://springboot-backend-production-6956.up.railway.app/api/v1/forget-password',info,{responseType: 'text'})
+    return this.httpClient.put('https://springboot-backend-production-6956.up.railway.app/api/v1/forget-password',info,{responseType: 'text'});
   }
 
   //otp helper function
@@ -270,9 +243,5 @@ export class StateService {
   getPasswordUpdate(){
     return this.passwordUpdate;
   }
-
-
-  
-
 
 }

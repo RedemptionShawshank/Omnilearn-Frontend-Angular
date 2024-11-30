@@ -11,12 +11,6 @@ import { AuthenticationCardComponent } from '../authentication-card/authenticati
 import { timer } from 'rxjs/internal/observable/timer';
 import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 
-// interface userInfo {
-//   id: number;
-//   username: string;
-//   emailId: string;
-//   password: string;
-// }
 
 @Component({
   selector: 'app-login',
@@ -73,10 +67,7 @@ export class LoginComponent {
   saveUserInfo(){
     
     this.service.addUserinfo(this.user);
-    // .subscribe( response => {
-    //   console.log("response",response);
-    // },
-    // error => console.log(error));
+
   }
 
 
@@ -149,10 +140,6 @@ export class LoginComponent {
       this.dialogRefVerifyCard.close();
     },3000);
 
-    // timer(3000).subscribe(() => {
-    //   console.log("inside timer");
-    //   this.dialogRefVerifyCard.close();
-    // });
   }
 
   openForgetPassword():void{
@@ -173,7 +160,6 @@ export class LoginComponent {
     if(!this.myFormSignIn.valid){
       this.invalid = true;
       this.wrongPassword = false;
-      // console.log("invalid form sign in");
       return;
     }
 
@@ -217,8 +203,7 @@ export class LoginComponent {
   }
 
   closeDialogSignIn():void{
-    // console.log("invalid",this.invalid);
-    // console.log("wrong password",this.wrongPassword);
+
     if(!this.wrongPassword){
       this.dialogRef.close();
     }

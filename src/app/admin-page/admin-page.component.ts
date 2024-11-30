@@ -10,16 +10,6 @@ import { PlatformCourseList } from '../platform-course-list';
 })
 export class AdminPageComponent {
 
-  // numOflinks!:number;
-
-  // linkArray: { value: string }[] = [];
-
-
-  // inputArray(num:number){
-  //   for(var i=0;i<num;i++){
-  //     this.linkArray.push({ value: '' });
-  //   }
-  // }
 
   form!: FormGroup;
   numRows: number = 0;
@@ -95,9 +85,6 @@ export class AdminPageComponent {
     });
 
 
-    // for(var i=0;i<this.form.value.length;i++){
-    //   this.courseList.push(this.form.value[i]);
-    // }
     console.log("course",this.courseList);
     this.service.sendCourseList(this.courseList).subscribe(data=>{
       console.log(data);

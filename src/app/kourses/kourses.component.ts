@@ -199,27 +199,14 @@ export class KoursesComponent implements OnInit {
 
         }
 
-        // console.log("filtered length: ",this.filteredCourses.length);
-        // console.log("not reset full list: ",this.showFullListOfCourses);
-        // console.log("not reset no result: ",this.showNoResult);
-
         if(this.filteredCourses.length === 0){
-          // console.log("filtered length: ",this.filteredCourses.length);
-          // console.log("if condition not reset full list: ",this.showFullListOfCourses);
-          // console.log("if condition not reset no result: ",this.showNoResult);
           this.showNoResult = true;
           this.showFullListOfCourses = false;
         }
         else{
-          // console.log("else condition not reset full list: ",this.showFullListOfCourses);
-          // console.log("else condition not reset no result: ",this.showNoResult);
           this.showFullListOfCourses = false;
           this.showNoResult = false;
         }
-
-    // console.log("filtered courses: ",this.filteredCourses);
-
-
 
   }
 
@@ -243,26 +230,7 @@ export class KoursesComponent implements OnInit {
   saveFavourite:FavouriteList[] = [];
 
 
-  // toggleFavorite(topic:any) {
 
-  //   const isTopicAlreadySaved = this.savedCourses.find(savedTopic => savedTopic.id === topic.id);
-
-  //   if(!isTopicAlreadySaved){
-  //     // this.active = true;
-  //     this.savedCourses.push(topic);
-  //   }
-  //   else{
-  //     // this.active = false;
-  //     const index = this.savedCourses.indexOf(topic);
-  //     if(index != -1){
-  //       this.savedCourses.splice(index,1);
-  //     }
-
-  //   }
-  //   console.log("saved : ",this.savedCourses);
-  // }
-
-  // adding and removing favourite courses from specified topics
   addFavorite(topic:PlatformCourseList){
 
     const username = localStorage.getItem('userName');
@@ -286,7 +254,6 @@ export class KoursesComponent implements OnInit {
       }
     );
 
-    // console.log("updated fav list",)
   }
 
   handleFavoriteCourse(event:any,topic:PlatformCourseList){

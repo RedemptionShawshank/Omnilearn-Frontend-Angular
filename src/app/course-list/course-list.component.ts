@@ -24,16 +24,9 @@ export class CourseListComponent implements OnInit {
 
   constructor(private router:Router,private dialog : MatDialog,private userService: StateService) {
 
-    // localStorage.clear();
     this.showTopicList=userService.getTopicListFlag();
     console.log("on constructor show topic list",this.showTopicList);
-    // console.log("courseLists component showTopicList: ",this.showTopicList);
 
-
-    // if(userService.getReloadFlag()){
-
-
-    // }
 
   }
 
@@ -44,7 +37,6 @@ export class CourseListComponent implements OnInit {
 
     this.userService.setTopicListFlag(false);
 
-    // localStorage.setItem('lastRoute', this.router.url);
 
   }
 
@@ -89,12 +81,8 @@ export class CourseListComponent implements OnInit {
     if (this.userService.isBackNavigation()) {
       console.log("entered here for back");
       this.showTopicList = true;
-      // this.userService.setTopicListFlag(this.showTopicList);
       this.userService.resetBackNavigationFlag();
     }
-    // else{
-    //   this.showTopicList = this.userService.getTopicListFlag();
-    // }
 
     console.log("courseLists component showTopicList: ",this.showTopicList);
  
@@ -133,15 +121,13 @@ export class CourseListComponent implements OnInit {
   }
 
 
-
-  // topic!:TopicList[];
+  
   topic!:TopicList[];
   getTopicOfType(type:string){
 
     this.userService.getTopicOfType(type).subscribe(data=>{
 
       this.topicList = data;
-      // console.log("on click of type: ",this.topic);
     });
   }
 
