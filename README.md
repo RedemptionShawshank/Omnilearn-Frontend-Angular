@@ -28,5 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Home page
 
-[![Watch the video](https://github.com/RedemptionShawshank/Omnilearn-Frontend-Angular/blob/master/homepage.mp4)
+https://github.com/RedemptionShawshank/Omnilearn-Frontend-Angular/blob/master/homepage.mp4
 
